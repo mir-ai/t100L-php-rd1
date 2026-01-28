@@ -4,16 +4,16 @@ namespace Tests\Unit\U01_Answer;
 
 use PHPUnit\Framework\TestCase;
 
-class U113VariableFunctions extends TestCase
+class U230VariableFunctions extends TestCase
 {
     // 
-    public function test_that_true_is_true(): void
+    public function test_230_010_that_true_is_true(): void
     {
         $this->assertTrue(true);
     }
 
     // empty 742
-    public function test_empty1(): void
+    public function test_230_020_empty1(): void
     {
         $is_empty1 = empty(0);
         $is_empty2 = empty('');
@@ -34,7 +34,7 @@ class U113VariableFunctions extends TestCase
     }
 
     // isset 124
-    public function test_isset1(): void
+    public function test_230_030_isset1(): void
     {
         $v = ['x' => 1];
         $this->assertTrue(isset($v['x']));
@@ -42,7 +42,7 @@ class U113VariableFunctions extends TestCase
     }
 
     // unset 28
-    public function test_unset1(): void
+    public function test_230_040_unset1(): void
     {
         $v = ['x' => 1, 'y' => 2];
         $this->assertTrue(isset($v['y']));
@@ -52,7 +52,7 @@ class U113VariableFunctions extends TestCase
     }
 
     // intval  202
-    public function test_intval(): void
+    public function test_230_050_intval(): void
     {
         $this->assertSame(0, intval(null));
         $this->assertSame(0, intval(''));
@@ -61,7 +61,7 @@ class U113VariableFunctions extends TestCase
     }
 
     // strval  25
-    public function test_strval(): void
+    public function test_230_060_strval(): void
     {
         $this->assertSame('', strval(null));
         $this->assertSame('', strval(''));
@@ -70,7 +70,7 @@ class U113VariableFunctions extends TestCase
     }
     
     // floatval  17
-    public function test_floatval(): void
+    public function test_230_070_floatval(): void
     {
         $this->assertSame(0.0, floatval(null));
         $this->assertSame(0.0, floatval(''));
@@ -79,7 +79,7 @@ class U113VariableFunctions extends TestCase
     }
 
     // boolval 2
-    public function test_boolval(): void
+    public function test_230_080_boolval(): void
     {
         $this->assertFalse(boolval(false));
         $this->assertFalse(boolval(null));
@@ -92,7 +92,7 @@ class U113VariableFunctions extends TestCase
     }
 
     // is_null 5
-    public function test_is_null(): void
+    public function test_230_090_is_null(): void
     {
         $this->assertTrue(is_null(null));
         $this->assertFalse(is_null(0));
@@ -101,7 +101,7 @@ class U113VariableFunctions extends TestCase
     }
 
     // is_numeric  15
-    public function test_is_numeric(): void
+    public function test_230_100_is_numeric(): void
     {
         $this->assertTrue(is_numeric(0));
         $this->assertTrue(is_numeric(123));
@@ -120,7 +120,7 @@ class U113VariableFunctions extends TestCase
     }
 
     // is_int  9
-    public function test_is_int(): void
+    public function test_230_110_is_int(): void
     {
         $this->assertTrue(is_int(0));
         $this->assertTrue(is_int(1));
@@ -132,7 +132,7 @@ class U113VariableFunctions extends TestCase
     }
 
     // is_string 2
-    public function test_is_string(): void
+    public function test_230_120_is_string(): void
     {
         $this->assertFalse(is_string(0));
         $this->assertFalse(is_string(123));
@@ -151,7 +151,7 @@ class U113VariableFunctions extends TestCase
     }
 
     // is_array  9
-    public function test_is_array(): void
+    public function test_230_130_is_array(): void
     {
         $this->assertTrue(is_array([]));
         $this->assertTrue(is_array([0]));
@@ -161,5 +161,29 @@ class U113VariableFunctions extends TestCase
         $this->assertFalse(is_array('0'));
         $this->assertFalse(is_array('A'));
     }
+
+    public function test_230_140_to_string(): void
+    {
+        $r = 123;
+
+        // QUESTION
+        $a = strval($r);
+        // /QUESTION
+
+        $this->assertTrue(is_string($a));
+        $this->assertSame('123', $a);
+    }
+
+    public function test_230_150_to_int(): void
+    {
+        $r = "123";
+
+        // QUESTION
+        $a = intval($r);
+        // /QUESTION
+
+        $this->assertTrue(is_numeric($a));
+        $this->assertSame(123, $a);
+    }    
 }
 

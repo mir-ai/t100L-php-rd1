@@ -4,9 +4,9 @@ namespace Tests\Unit\U01_Answer;
 
 use PHPUnit\Framework\TestCase;
 
-class U107IfTest extends TestCase
+class U170IfTest extends TestCase
 {
-    public function test_u100160(): void
+    public function test_170_010(): void
     {
         $r = [];
         $r[] = 'a';
@@ -16,7 +16,7 @@ class U107IfTest extends TestCase
         $this->assertSame(['a', 'b', 'c'], $r);
     }
 
-    public function test_u100161(): void
+    public function test_170_020(): void
     {
         $r = [];
         $r[] = 'a';
@@ -25,10 +25,14 @@ class U107IfTest extends TestCase
             $r[] = 'b';
         }
 
-        $this->assertSame(['a', 'b'], $r);
+        // QUESTION
+        $a = ['a', 'b'];
+        // /QUESTION
+
+        $this->assertSame($a, $r);
     }
 
-    public function test_u100162(): void
+    public function test_170_030(): void
     {
         $r = [];
         $r[] = 'a';
@@ -37,10 +41,14 @@ class U107IfTest extends TestCase
             $r[] = 'b';
         }
 
-        $this->assertSame(['a'], $r);
+        // QUESTION
+        $a = ['a'];
+        // /QUESTION
+
+        $this->assertSame($a, $r);
     }
 
-    public function test_u100163(): void
+    public function test_170_040(): void
     {
         $r = [];
         $r[] = 'a';
@@ -51,10 +59,14 @@ class U107IfTest extends TestCase
             $r[] = 'c';
         }
 
-        $this->assertSame(['a', 'b'], $r);
+        // QUESTION
+        $a = ['a', 'b'];
+        // /QUESTION
+
+        $this->assertSame($a, $r);
     }
 
-    public function test_u100164(): void
+    public function test_170_050(): void
     {
         $r = [];
         $r[] = 'a';
@@ -65,10 +77,14 @@ class U107IfTest extends TestCase
             $r[] = 'c';
         }
 
-        $this->assertSame(['a', 'c'], $r);
+        // QUESTION
+        $a = ['a', 'c'];
+        // /QUESTION
+
+        $this->assertSame($a, $r);
     }
 
-    public function test_u100165(): void
+    public function test_170_060(): void
     {
         $r = [];
         $r[] = 'a';
@@ -81,10 +97,14 @@ class U107IfTest extends TestCase
             $r[] = 'd';
         }
 
-        $this->assertSame(['a', 'c'], $r);
+        // QUESTION
+        $a = ['a', 'c'];
+        // /QUESTION
+
+        $this->assertSame($a, $r);
     }
 
-    public function test_u100166(): void
+    public function test_170_070(): void
     {
         $r = [];
         $r[] = 'a';
@@ -96,10 +116,14 @@ class U107IfTest extends TestCase
             default => 'e',
         };
 
-        $this->assertSame(['a', 'b'], $r);
+        // QUESTION
+        $a = ['a', 'b'];
+        // /QUESTION
+
+        $this->assertSame($a, $r);
     }
 
-    public function test_u100167(): void
+    public function test_170_080(): void
     {
         $r = [];
         $r[] = 'a';
@@ -111,10 +135,14 @@ class U107IfTest extends TestCase
             default => 'e',
         };
 
-        $this->assertSame(['a', 'd'], $r);
+        // QUESTION
+        $a = ['a', 'd'];
+        // /QUESTION
+
+        $this->assertSame($a, $r);
     }
 
-    public function test_u100168(): void
+    public function test_170_090(): void
     {
         $r = [];
         $r[] = 'a';
@@ -126,10 +154,14 @@ class U107IfTest extends TestCase
             default => 'e',
         };
 
-        $this->assertSame(['a', 'e'], $r);
+        // QUESTION
+        $a = ['a', 'e'];
+        // /QUESTION
+
+        $this->assertSame($a, $r);
     }
 
-    public function test_u100169(): void
+    public function test_170_100(): void
     {
         $i  = 2;
 
@@ -143,7 +175,11 @@ class U107IfTest extends TestCase
             default => 'e',
         };
 
-        $this->assertSame(['a', 'c'], $r);
+        // QUESTION
+        $a = ['a', 'c'];
+        // /QUESTION
+
+        $this->assertSame($a, $r);
     }
 }
 

@@ -4,16 +4,16 @@ namespace Tests\Unit\U01_Answer;
 
 use PHPUnit\Framework\TestCase;
 
-class U109Array2 extends TestCase
+class U190Array2 extends TestCase
 {
-    public function test_u100184(): void
+    public function test_190_010(): void
     {
         $r = [1, 2, 3];
 
         $this->assertSame([1, 2, 3], $r);
     }
 
-    public function test_u100185(): void
+    public function test_190_020(): void
     {
         $r = [
             1, 
@@ -24,7 +24,7 @@ class U109Array2 extends TestCase
         $this->assertSame([1, 2, 3], $r);
     }
 
-    public function test_u100186(): void
+    public function test_190_030(): void
     {
         $r = [
             [10, 11, 12], 
@@ -39,7 +39,7 @@ class U109Array2 extends TestCase
         ], $r);
     }
 
-    public function test_u100187(): void
+    public function test_190_040(): void
     {
         $r = [
             ['a', 'b', 'c'], 
@@ -54,7 +54,7 @@ class U109Array2 extends TestCase
         ], $r);
     }
     
-    public function test_u100188(): void
+    public function test_190_050(): void
     {
         $r = [
             1,
@@ -65,7 +65,7 @@ class U109Array2 extends TestCase
         $this->assertSame([1, 2, 3], $r);
     }
 
-    public function test_u100189(): void
+    public function test_190_060(): void
     {
         $r = [
             0 => 1,
@@ -76,7 +76,7 @@ class U109Array2 extends TestCase
         $this->assertSame([1, 2, 3], $r);
     }
 
-    public function test_u100190(): void
+    public function test_190_070(): void
     {
         $r = [
             'a', 
@@ -87,7 +87,7 @@ class U109Array2 extends TestCase
         $this->assertSame(['a', 'b', 'c'], $r);
     }
 
-    public function test_u100191(): void
+    public function test_190_080(): void
     {
         $r = [
             0 => 'a', 
@@ -98,7 +98,7 @@ class U109Array2 extends TestCase
         $this->assertSame(['a', 'b', 'c'], $r);
     }
 
-    public function test_u100192(): void
+    public function test_190_090(): void
     {
         $r = [
             0  => 'a', 
@@ -109,7 +109,7 @@ class U109Array2 extends TestCase
         $this->assertSame([0 => 'a', 10 => 'b', 20 => 'c'], $r);
     }
 
-    public function test_u100193(): void
+    public function test_190_100(): void
     {
         $r = [
             0   => 'a', 
@@ -120,7 +120,7 @@ class U109Array2 extends TestCase
         $this->assertSame([0 => 'a', 100 => 'b', 200 => 'c'], $r);
     }
 
-    public function test_u100194(): void
+    public function test_190_110(): void
     {
         $r = [
             'first'  => 'a', 
@@ -131,7 +131,7 @@ class U109Array2 extends TestCase
         $this->assertSame(['first' => 'a', 'second' => 'b', 'third' => 'c'], $r);
     }
 
-    public function test_u100195(): void
+    public function test_190_120(): void
     {
         $population_kvs = [
             'Tokyo'  => 14047594, 
@@ -142,7 +142,7 @@ class U109Array2 extends TestCase
         $this->assertSame(['Tokyo' => 14047594, 'Osaka' => 8837685, 'Aichi' => 7542415], $population_kvs);
     }
     
-    public function test_u100196(): void
+    public function test_190_130(): void
     {
         $population_kvs = [
             '東京都'  => 14047594, 
@@ -153,7 +153,7 @@ class U109Array2 extends TestCase
         $this->assertSame(['東京都' => 14047594, '大阪府' => 8837685, '愛知県' => 7542415], $population_kvs);
     }
     
-    public function test_u100197(): void
+    public function test_190_140(): void
     {
         $population_kvs = [
             '東京都'  => [13159388, 13515271, 14047594], 
@@ -171,7 +171,7 @@ class U109Array2 extends TestCase
         );
     }
     
-    public function test_u100198(): void
+    public function test_190_150(): void
     {
         $years = ['2010', '2015', '2020'];
         $population_kvs = [
@@ -191,7 +191,7 @@ class U109Array2 extends TestCase
         );
     }
     
-    public function test_u100199(): void
+    public function test_190_160(): void
     {
         $population_kvs = [
             '東京都'  => [
@@ -233,7 +233,7 @@ class U109Array2 extends TestCase
         );
     }
 
-    public function test_u100200(): void
+    public function test_190_170(): void
     {
         $prefectures = ['Tokyo', 'Oosaka', 'Aichi'];
         $r = [];
@@ -245,7 +245,7 @@ class U109Array2 extends TestCase
         $this->assertSame(['Tokyo Love', 'Oosaka Love', 'Aichi Love'], $r);
     }
 
-    public function test_u100201(): void
+    public function test_190_180(): void
     {
         $prefectures = ['東京都', '大阪府', '愛知県'];
         $r = [];
@@ -257,7 +257,7 @@ class U109Array2 extends TestCase
         $this->assertSame(['東京都ラブ', '大阪府ラブ', '愛知県ラブ'], $r);
     }
 
-    public function test_u100202(): void
+    public function test_190_190(): void
     {
         $population_kvs = [
             '東京都'  => 14047594, 
@@ -278,7 +278,7 @@ class U109Array2 extends TestCase
         ], $r);
     }
 
-    public function test_u100203(): void
+    public function test_190_200(): void
     {
         $translation_kvs = [
             '犬'  => 'dog',
@@ -299,7 +299,7 @@ class U109Array2 extends TestCase
         ], $r);
     }
 
-    public function test_u100204(): void
+    public function test_190_210(): void
     {
         $company_url_kvs = [
             'Yahoo'  => 'https://www.yahoo.co.jp/',
@@ -320,7 +320,7 @@ class U109Array2 extends TestCase
         ], $r);
     }
     
-    public function test_u100205(): void
+    public function test_190_220(): void
     {
         $population_kvs = [
             '東京都'  => [13159388, 13515271, 14047594], 
@@ -353,7 +353,7 @@ class U109Array2 extends TestCase
         ], $r);
     }    
     
-    public function test_u100206(): void
+    public function test_190_230(): void
     {
         $population_kvs = [
             '東京都'  => [
@@ -394,7 +394,7 @@ class U109Array2 extends TestCase
         ], $r);
     }    
 
-    public function test_u100207(): void
+    public function test_190_240(): void
     {
         $animal_translation_kvs = [
             '犬'  => [
@@ -435,7 +435,7 @@ class U109Array2 extends TestCase
         ], $r);
     }    
     
-    public function test_u100208(): void
+    public function test_190_250(): void
     {
         $kvs = [];
         $kvs['東京都'] = 14047594;
@@ -454,40 +454,105 @@ class U109Array2 extends TestCase
         ], $r);
     }
 
+    public function test_190_260(): void
+    {
+        $kvs = [
+            '東武鉄道' => 463.3,
+            '小田急電鉄' => 120.5,
+            '東京メトロ' => 195.1,
+            '京成電鉄' => 178.8,
+            '西武鉄道' => 176.6,
+            '東急鉄道' => 110.7,
+            '京浜急行' =>  87.1,
+            '京王電鉄' =>  84.7,
+        ];
 
-    /**
-     * 
-     *  assertNull($var)	$varがNULLである
-     *  assertEquals($val1, $val2)	$val1が$val2と等しい
-     *  assertSame($val1, $val2)	$val1と$val2が型も含めて等しい
-     *  assertInternalType($type, $val)	$valの型名が$typeである
-     *      
-     *  assertGreaterThan($expect, $var)	$expect < $var が成立する
-     *  assertGreaterThanOrEqual($expect, $var)	$expect <= $var が成立する
-     *  assertLessThan($expect, $var)	$expect > $var が成立する
-     *  assertLessThanOrEqual($expect, $var)	$expect >= $var が成立する
-     *      
-     *  assertJsonStringEqualsJsonString($str1, $str2)	$str1と$str2がjsonとして等しい
-     *  assertRegExp($ptn, $str)	$strが正規表現$ptnにマッチする
-     *      
-     *  assertTrue($var)	$varがTRUEである
-     *  assertFalse($var)	$varがFALSEである
-     *      
-     *  assertArrayHasKey($key, $array)	配列$arrayにキー$keyが存在する
-     *  assertContains($val, $array)	配列$arrayに値$valが存在する
-     *  assertContainsOnly($type, $array)	配列$arrayの値の型がすべて$typeである
-     *  assertCount($count, $array)	配列$arrayの値の数が$countである
-     *  assertEmpty($array)	配列$arrayが空である
-     *      
-     *  assertObjectHasAttribute($attr, $object)	オブジェクト$objectにプロパティ変数$attrが存在する
-     *  assertClassHasAttribute($attr, $class)	クラス名$classにプロパティ変数$attrが存在する
-     *  assertClassHasStaticAttribute($attr, $class)	クラス名$classに静的プロパティ変数$attrが存在する
-     *  assertInstanceOf($class, $instance)	$instanceがクラス名$classのインスタンスである
-     *      
-     *  assertFileExists($file)	$fileが存在する
-     *  assertFileEquals($file1, $file2)	$file1と$file2の内容が等しい
-     *  assertJsonFileEqualsJsonFile($file1, $file2)	$file1と$file2の内容がjsonとして等しい
-     *  assertJsonStringEqualsJsonFile($file1, $json)	$file1の内容と$jsonがjsonとして等しい
-     */
+        $r = [];
+
+        // 自分で foreach 文と回答をかいて下さい。
+        
+        // QUESTION
+        foreach ($kvs as $name => $length) {
+            $r[] = "{$name}の路線総延長は {$length} キロです。";
+        }
+        // /QUESTION
+
+        $a = [
+            '東武鉄道の路線総延長は 463.3 キロです。',
+            '小田急電鉄の路線総延長は 120.5 キロです。',
+            '東京メトロの路線総延長は 195.1 キロです。',
+            '京成電鉄の路線総延長は 178.8 キロです。',
+            '西武鉄道の路線総延長は 176.6 キロです。',
+            '東急鉄道の路線総延長は 110.7 キロです。',
+            '京浜急行の路線総延長は 87.1 キロです。',
+            '京王電鉄の路線総延長は 84.7 キロです。',
+        ];
+        $this->assertSame($a, $r);
+    }
+
+
+    public function test_190_270(): void
+    {
+        $kvs = [
+            '東武鉄道' => [
+                'length' => 463.3,
+                'passengers' => 4524834
+            ],
+            '小田急電鉄' => [
+                'length' => 120.5,
+                'passengers' => 3575025
+            ],
+            '東京メトロ' => [
+                'length' => 195.1,
+                'passengers' => 13673968
+            ],
+            '京成電鉄' => [
+                'length' => 178.8,
+                'passengers' => 1443638
+            ],
+            '西武鉄道' => [
+                'length' => 176.6,
+                'passengers' => 3114486
+            ],
+            '東急鉄道' => [
+                'length' => 110.7,
+                'passengers' => 5827594
+            ],
+            '京浜急行' => [
+                'length' =>  87.1,
+                'passengers' => 2161920
+            ],
+            '京王電鉄' => [
+                'length' =>  84.7,
+                'passengers' => 3250863
+            ],
+        ];
+
+        $r = [];
+
+        // 自分で foreach 文と回答をかいて下さい。
+        // QUESTION
+        foreach ($kvs as $name => $item) {
+            $r[] = "{$name}の路線総延長は {$item['length']} キロ、１日の乗降客数は {$item['passengers']} 人です。";
+        }
+        // /QUESTION
+
+        $a = [
+            '東武鉄道の路線総延長は 463.3 キロ、１日の乗降客数は 4524834 人です。',
+            '小田急電鉄の路線総延長は 120.5 キロ、１日の乗降客数は 3575025 人です。',
+            '東京メトロの路線総延長は 195.1 キロ、１日の乗降客数は 13673968 人です。',
+            '京成電鉄の路線総延長は 178.8 キロ、１日の乗降客数は 1443638 人です。',
+            '西武鉄道の路線総延長は 176.6 キロ、１日の乗降客数は 3114486 人です。',
+            '東急鉄道の路線総延長は 110.7 キロ、１日の乗降客数は 5827594 人です。',
+            '京浜急行の路線総延長は 87.1 キロ、１日の乗降客数は 2161920 人です。',
+            '京王電鉄の路線総延長は 84.7 キロ、１日の乗降客数は 3250863 人です。',
+        ];
+
+        $this->assertSame($a, $r);
+    }
+
+
+
+
 }
 
