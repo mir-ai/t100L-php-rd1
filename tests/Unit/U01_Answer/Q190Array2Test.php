@@ -4,7 +4,7 @@ namespace Tests\Unit\U01_Answer;
 
 use PHPUnit\Framework\TestCase;
 
-class U190Array2 extends TestCase
+class Q190Array2Test extends TestCase
 {
     public function test_190_010(): void
     {

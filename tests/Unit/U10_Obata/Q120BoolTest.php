@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Unit\U01_Answer;
+namespace Tests\Unit\U10_Obata;
 
 use PHPUnit\Framework\TestCase;
 
-class U120BoolTest extends TestCase
+class Q120BoolTest extends TestCase
 {
     public function test_120_010(): void
     {
@@ -12,7 +12,7 @@ class U120BoolTest extends TestCase
         $r = ! $r;
 
         // QUESTION
-        $a = false;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -24,7 +24,7 @@ class U120BoolTest extends TestCase
         $r = ! $r;
 
         // QUESTION
-        $a = true;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -35,7 +35,7 @@ class U120BoolTest extends TestCase
         $r = true && true;
 
         // QUESTION
-        $a = true;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -46,7 +46,7 @@ class U120BoolTest extends TestCase
         $r = true && false;
 
         // QUESTION
-        $a = false;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -57,7 +57,7 @@ class U120BoolTest extends TestCase
         $r = true || true;
 
         // QUESTION
-        $a = true;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -68,7 +68,7 @@ class U120BoolTest extends TestCase
         $r = true || false;
 
         // QUESTION
-        $a = true;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -79,7 +79,7 @@ class U120BoolTest extends TestCase
         $r = false || true;
 
         // QUESTION
-        $a = true;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -90,7 +90,7 @@ class U120BoolTest extends TestCase
         $r = false || false;
 
         // QUESTION
-        $a = false;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);

@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Unit\U01_Answer;
+namespace Tests\Unit\U10_Obata;
 
 use PHPUnit\Framework\TestCase;
 
-class U210ArrayFunctions extends TestCase
+class Q210ArrayFunctionsTest extends TestCase
 {
-    // 
+    //
     public function test_210_010_that_true_is_true(): void
     {
         $this->assertTrue(true);
@@ -18,7 +18,7 @@ class U210ArrayFunctions extends TestCase
         $r = array_merge([1, 2, 3], [4, 5, 6]);
 
         // QUESTION
-        $a = [1, 2, 3, 4, 5, 6];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -41,14 +41,7 @@ class U210ArrayFunctions extends TestCase
         );
 
         // QUESTION
-        $a = [
-                'a' => 1,
-                'b' => 2,
-                'c' => 3,
-                'd' => 4,
-                'e' => 5,
-                'f' => 6
-        ];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -72,7 +65,7 @@ class U210ArrayFunctions extends TestCase
         $r = implode(', ', ['a', 'b', 'c']);
 
         // QUESTION
-        $a = 'a, b, c';
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -84,7 +77,7 @@ class U210ArrayFunctions extends TestCase
         $r = explode(', ', 'a, b, c');
 
         // QUESTION
-        $a = ['a', 'b', 'c'];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -96,7 +89,7 @@ class U210ArrayFunctions extends TestCase
         $r = in_array('a', ['a', 'b', 'c']);
 
         // QUESTION
-        $a = true;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -107,7 +100,7 @@ class U210ArrayFunctions extends TestCase
         $r = in_array('d', ['a', 'b', 'c']);
 
         // QUESTION
-        $a = false;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -118,7 +111,7 @@ class U210ArrayFunctions extends TestCase
         $r = in_array('d', ['a', 'b', 'c']);
 
         // QUESTION
-        $a = false;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -129,7 +122,7 @@ class U210ArrayFunctions extends TestCase
         $r = in_array(1, [1, 2, 3]);
 
         // QUESTION
-        $a = true;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -140,7 +133,7 @@ class U210ArrayFunctions extends TestCase
         $r = in_array("1", [1, 2, 3]);
 
         // QUESTION
-        $a = true;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -151,7 +144,7 @@ class U210ArrayFunctions extends TestCase
         $r = in_array("1", [1, 2, 3], true); // 第三引数にtrueを指定して型を厳密に比較することもできる
 
         // QUESTION
-        $a = false;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -161,15 +154,15 @@ class U210ArrayFunctions extends TestCase
     public function test_210_130_array_keys(): void
     {
         $population_kvs = [
-            '東京都'  => 14047594, 
-            '大阪府' =>  8837685, 
+            '東京都'  => 14047594,
+            '大阪府' =>  8837685,
             '愛知県'  => 7542415,
         ];
 
         $r = array_keys($population_kvs);
 
         // QUESTION
-        $a = ['東京都', '大阪府', '愛知県'];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -179,15 +172,15 @@ class U210ArrayFunctions extends TestCase
     public function test_210_140_array_values(): void
     {
         $population_kvs = [
-            '東京都'  => 14047594, 
-            '大阪府' =>  8837685, 
+            '東京都'  => 14047594,
+            '大阪府' =>  8837685,
             '愛知県'  => 7542415,
         ];
 
         $r = array_values($population_kvs);
 
         // QUESTION
-        $a = [14047594, 8837685, 7542415];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -199,7 +192,7 @@ class U210ArrayFunctions extends TestCase
         $r = array_unique([1, 2, 3, 4, 3, 2, 1]);
 
         // QUESTION
-        $a = [1, 2, 3, 4];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -212,7 +205,7 @@ class U210ArrayFunctions extends TestCase
         $r = array_values($r); // 構造が変わってしまうので、array_valuesで整理
 
         // QUESTION
-        $a = [1, 2, 3, 4, 5, 6];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -224,7 +217,7 @@ class U210ArrayFunctions extends TestCase
         $r = array_chunk([1, 2, 3, 4, 5, 6, 7], 3);
 
         // QUESTION
-        $a = [[1, 2, 3], [4, 5, 6], [7]];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -237,7 +230,7 @@ class U210ArrayFunctions extends TestCase
         $r = array_slice([1, 2, 3, 4, 5], 2, 2);
 
         // QUESTION
-        $a = [3, 4];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -248,7 +241,7 @@ class U210ArrayFunctions extends TestCase
         $r = array_slice([1, 2, 3, 4, 5], -2, 2);
 
         // QUESTION
-        $a = [4, 5];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -260,7 +253,7 @@ class U210ArrayFunctions extends TestCase
         $r = array_reverse([1, 2, 3]);
 
         // QUESTION
-        $a = [3, 2, 1];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -273,7 +266,7 @@ class U210ArrayFunctions extends TestCase
         $r = array_values($r);
 
         // QUESTION
-        $a = [2, 3];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -286,7 +279,7 @@ class U210ArrayFunctions extends TestCase
         $r = array_values($r);
 
         // QUESTION
-        $a = [1, 2];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -298,7 +291,7 @@ class U210ArrayFunctions extends TestCase
         $r = array_values($r);
 
         // QUESTION
-        $a = ['a', 'd'];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -323,11 +316,7 @@ class U210ArrayFunctions extends TestCase
         $r = array_count_values([1, 1, 1, 2, 2, 3]);
 
         // QUESTION
-        $a = [
-            1 => 3,
-            2 => 2,
-            3 => 1,
-        ];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -337,22 +326,18 @@ class U210ArrayFunctions extends TestCase
     public function test_210_260_array_flip(): void
     {
         $population_kvs = [
-            '東京都'  => 14047594, 
-            '大阪府' =>  8837685, 
+            '東京都'  => 14047594,
+            '大阪府' =>  8837685,
             '愛知県'  => 7542415,
         ];
-        
+
         $r = array_flip($population_kvs);
 
         // QUESTION
-        $a = [
-            14047594 => '東京都',
-            8837685 => '大阪府',
-            7542415 => '愛知県',
-        ];
+		$a = null;
         // /QUESTION
 
-        $this->assertSame($a, $r);        
+        $this->assertSame($a, $r);
     }
 
     // array_pop 2
@@ -362,14 +347,14 @@ class U210ArrayFunctions extends TestCase
         $r = array_pop($v);
 
         // QUESTION
-        $a = 3;
+		$a = null;
         // /QUESTION
 
-        $this->assertSame($a, $r);        
+        $this->assertSame($a, $r);
 
         $this->assertSame([1, 2], $v);
     }
-    
+
     // array_unshift 2
     public function test_210_280_array_unshift(): void
     {
@@ -377,7 +362,7 @@ class U210ArrayFunctions extends TestCase
         array_unshift($v, -1, 0);
 
         // QUESTION
-        $a = [-1, 0, 1, 2, 3];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $v);
@@ -390,7 +375,7 @@ class U210ArrayFunctions extends TestCase
         $r = array_shift($v);
 
         // QUESTION
-        $a = 1;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -417,10 +402,10 @@ class U210ArrayFunctions extends TestCase
         $r = array_sum([1, 2, 3, 4, 5]);
 
         // QUESTION
-        $a = 15;
+		$a = null;
         // /QUESTION
 
-        $this->assertSame($a, $r);        
+        $this->assertSame($a, $r);
     }
 
     // asort 3
@@ -436,12 +421,7 @@ class U210ArrayFunctions extends TestCase
         asort($r);
 
         // QUESTION
-        $a = [
-            '千葉県' => 6284480,
-            '埼玉県' => 7344765,
-            '神奈川県' => 9237337,
-            '東京都' => 14047594,
-        ];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -460,12 +440,7 @@ class U210ArrayFunctions extends TestCase
         arsort($r);
 
         // QUESTION
-        $a = [
-            '東京都' => 14047594,
-            '神奈川県' => 9237337,
-            '埼玉県' => 7344765,
-            '千葉県' => 6284480,
-        ];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -484,16 +459,11 @@ class U210ArrayFunctions extends TestCase
         ksort($r);
 
         // QUESTION
-        $a = [
-            'Chiba' => 6284480,
-            'Kanagawa' => 9237337,
-            'Saitama' => 7344765,
-            'Tokyo' => 14047594,
-        ];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
-    }    
+    }
 
     // krsort  1
     public function test_210_350_krsort(): void
@@ -508,16 +478,11 @@ class U210ArrayFunctions extends TestCase
         krsort($r);
 
         // QUESTION
-        $a = [
-            'Tokyo' => 14047594,
-            'Saitama' => 7344765,
-            'Kanagawa' => 9237337,
-            'Chiba' => 6284480,
-        ];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
-    }    
+    }
 
     // array_column  7
     public function test_210_360_array_column(): void
@@ -529,27 +494,22 @@ class U210ArrayFunctions extends TestCase
             ],
             [
                 'name' => '埼玉県',
-                'population' => 7344765	
+                'population' => 7344765
             ],
             [
                 'name' => '東京都',
                 'population' => 14047594
-            ], 
+            ],
             [
                 'name' => '神奈川県',
-                'population' => 9237337	
-            ], 
+                'population' => 9237337
+            ],
         ];
 
         $r = array_column($prefectures, 'population');
 
         // QUESTION
-        $a = [
-            6284480,
-            7344765,
-            14047594,
-            9237337,
-        ];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -565,16 +525,16 @@ class U210ArrayFunctions extends TestCase
             ],
             [
                 'name' => '埼玉県',
-                'population' => 7344765	
+                'population' => 7344765
             ],
             [
                 'name' => '東京都',
                 'population' => 14047594
-            ], 
+            ],
             [
                 'name' => '神奈川県',
-                'population' => 9237337	
-            ], 
+                'population' => 9237337
+            ],
         ];
 
         $populations = array_column($prefectures, 'population');
@@ -582,24 +542,7 @@ class U210ArrayFunctions extends TestCase
         array_multisort($populations, $prefectures);
 
         // QUESTION
-        $a = [
-            [
-                'name' => '千葉県',
-                'population' => 6284480
-            ],
-            [
-                'name' => '埼玉県',
-                'population' => 7344765	
-            ],
-            [
-                'name' => '神奈川県',
-                'population' => 9237337	
-            ], 
-            [
-                'name' => '東京都',
-                'population' => 14047594
-            ], 
-        ];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $prefectures);

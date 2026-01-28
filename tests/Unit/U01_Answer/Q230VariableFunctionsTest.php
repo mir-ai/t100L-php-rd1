@@ -4,7 +4,7 @@ namespace Tests\Unit\U01_Answer;
 
 use PHPUnit\Framework\TestCase;
 
-class U230VariableFunctions extends TestCase
+class Q230VariableFunctionsTest extends TestCase
 {
     // 
     public function test_230_010_that_true_is_true(): void

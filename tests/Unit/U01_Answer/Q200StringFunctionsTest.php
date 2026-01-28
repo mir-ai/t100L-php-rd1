@@ -4,7 +4,7 @@ namespace Tests\Unit\U01_Answer;
 
 use PHPUnit\Framework\TestCase;
 
-class U200StringFunctions extends TestCase
+class Q200StringFunctionsTest extends TestCase
 {
     // 
     public function test_200_010_that_true_is_true(): void

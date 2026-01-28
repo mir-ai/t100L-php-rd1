@@ -4,7 +4,7 @@ namespace Tests\Unit\U01_Answer;
 
 use PHPUnit\Framework\TestCase;
 
-class U160ConditionTest extends TestCase
+class Q160ConditionTest extends TestCase
 {
     public function test_160_010(): void
     {

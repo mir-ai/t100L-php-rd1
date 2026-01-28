@@ -1,17 +1,17 @@
 <?php
 
-namespace Tests\Unit\U01_Answer;
+namespace Tests\Unit\U10_Obata;
 
 use PHPUnit\Framework\TestCase;
 
-class U140StringTest extends TestCase
+class Q140StringTest extends TestCase
 {
     public function test_140_010(): void
     {
         $r = 'abc';
 
         // QUESTION
-        $a = 'abc';
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -22,7 +22,7 @@ class U140StringTest extends TestCase
         $r = "abc";
 
         // QUESTION
-        $a = 'abc';
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -34,7 +34,7 @@ class U140StringTest extends TestCase
         $r = 'abc{$n}';
 
         // QUESTION
-        $a = 'abc{$n}';
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -46,7 +46,7 @@ class U140StringTest extends TestCase
         $r = "abc{$n}";
 
         // QUESTION
-        $a = 'abc1';
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -58,7 +58,7 @@ class U140StringTest extends TestCase
         $r = "abc{$s}";
 
         // QUESTION
-        $a = 'abcdef';
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -69,7 +69,7 @@ class U140StringTest extends TestCase
         $r = 'a' . 'b' . 'c';
 
         // QUESTION
-        $a = 'abc';
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -80,7 +80,7 @@ class U140StringTest extends TestCase
         $r = 'a' . 'b' . 'c' . 1 . 2 . 3;
 
         // QUESTION
-        $a = 'abc123';
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -91,7 +91,7 @@ class U140StringTest extends TestCase
         $r = '\n';
 
         // QUESTION
-        $a = '\n';
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -102,9 +102,9 @@ class U140StringTest extends TestCase
         $r = ("\n" == '\n');
 
         // QUESTION
-        $a = false;
+		$a = null;
         // /QUESTION
-        
+
         $this->assertSame($a, $r);
     }
 
@@ -113,7 +113,7 @@ class U140StringTest extends TestCase
         $r = ('"' == "\"");
 
         // QUESTION
-        $a = true;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r); // "
@@ -124,7 +124,7 @@ class U140StringTest extends TestCase
         $r = ("'" == '\'');
 
         // QUESTION
-        $a = true;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r); // '

@@ -4,7 +4,7 @@ namespace Tests\Unit\U01_Answer;
 
 use PHPUnit\Framework\TestCase;
 
-class U100SuccessTest extends TestCase
+class Q100SuccessTest extends TestCase
 {
     // Better PHPUnit というVSCodeのエクステンションを入れます。
     // Command キーを押したまま、 k を押して、つぎに(Command キーを押したまま) f を押すと、

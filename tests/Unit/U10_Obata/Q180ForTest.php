@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Unit\U01_Answer;
+namespace Tests\Unit\U10_Obata;
 
 use PHPUnit\Framework\TestCase;
 
-class U180ForTest extends TestCase
+class Q180ForTest extends TestCase
 {
     public function test_180_010(): void
     {
@@ -12,7 +12,7 @@ class U180ForTest extends TestCase
         $r++;
 
         // QUESTION
-        $a = 2;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -25,7 +25,7 @@ class U180ForTest extends TestCase
         $r++;
 
         // QUESTION
-        $a = 4;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -40,7 +40,7 @@ class U180ForTest extends TestCase
         }
 
         // QUESTION
-        $a = [0, 1, 2];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -55,7 +55,7 @@ class U180ForTest extends TestCase
         }
 
         // QUESTION
-        $a = [0, 1, 2, 3];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -67,7 +67,7 @@ class U180ForTest extends TestCase
         $r += 2;
 
         // QUESTION
-        $a = 3;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -80,7 +80,7 @@ class U180ForTest extends TestCase
         $r += 2;
 
         // QUESTION
-        $a = 5;
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -95,7 +95,7 @@ class U180ForTest extends TestCase
         }
 
         // QUESTION
-        $a = [0, 2, 4];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -110,7 +110,7 @@ class U180ForTest extends TestCase
         }
 
         // QUESTION
-        $a = [0, 2, 4, 6];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -127,7 +127,7 @@ class U180ForTest extends TestCase
         }
 
         // QUESTION
-        $a = [0, 1, 2];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -144,7 +144,7 @@ class U180ForTest extends TestCase
         }
 
         // QUESTION
-        $a = [0, 2, 4];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -161,7 +161,7 @@ class U180ForTest extends TestCase
         }
 
         // QUESTION
-        $a = [0, 2, 4, 6];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -178,7 +178,7 @@ class U180ForTest extends TestCase
         }
 
         // QUESTION
-        $a = [1, 2, 4, 8];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -196,7 +196,7 @@ class U180ForTest extends TestCase
         }
 
         // QUESTION
-        $a = [0, 1, 2, 4, 5];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -214,7 +214,7 @@ class U180ForTest extends TestCase
         }
 
         // QUESTION
-        $a = [3, 4, 5];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -232,7 +232,7 @@ class U180ForTest extends TestCase
         }
 
         // QUESTION
-        $a = [0, 1, 2, 3];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
@@ -250,7 +250,7 @@ class U180ForTest extends TestCase
         }
 
         // QUESTION
-        $a = [0, 1, 2, 3];
+		$a = null;
         // /QUESTION
 
         $this->assertSame($a, $r);
