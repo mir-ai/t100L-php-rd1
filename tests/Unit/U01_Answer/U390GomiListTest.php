@@ -50,7 +50,7 @@ class U390GomiListTest extends TestCase
     // tests/Unit/data/gomi_items_utf8.tsv (または tests/Unit/data/gomi_items_small_utf8.tsv)
     // を読み込んで、処理手数料が1240円のごみの、「品目」と「詳細」と「大きさ・長さ」欄を結合して配列に出力します。
 
-    public function test_390_expensive_gomi(): void
+    public function test_390_020_expensive_gomi(): void
     {
         // 元データを読み込む
         // $filename = 'tests/Unit/data/gomi_items_small_utf8.tsv';
@@ -102,6 +102,28 @@ class U390GomiListTest extends TestCase
         $a = $this->getOutput();
 
         $this->assertSame($a, $r);
+    }
+
+    // 上級課題1
+    // アイロンの連絡ごみの処理手数料を探す
+    public function test_390_030_iron_price(): void
+    {
+        $this->assertTrue(true);
+    }
+
+    // 上級課題2
+    // 電池を取り外して排出する必要のあるごみ名称を抽出する。
+    // 「排出方法･備考」に「電池類は取り外」と書かれているもの
+    public function test_390_040_without_battery(): void
+    {
+        $this->assertTrue(true);
+    }
+
+    // 上級課題3
+    // 全部の品目を１点ずつ排出したら、総額いくらになるかを求める。
+    public function test_390_050_total_prices(): void
+    {
+        $this->assertTrue(true);
     }
 
 }        

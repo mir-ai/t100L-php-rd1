@@ -43,7 +43,7 @@ class GomiItemUpdateRawRequest extends FormRequest
             'detail' => ['nullable', 'string', 'max:64'],
             'size' => ['nullable', 'string', 'max:64'],
             'gomi_type' => ['nullable', 'string', 'max:64'],
-            'fee' => ['nullable', 'string', 'max:64'],
+            'fee' => ['nullable', 'numeric'],
             'description' => ['nullable', 'string', 'max:4000'],
             'howto' => ['nullable', 'string', 'max:4000'],
             'words' => ['nullable', 'string', 'max:4000'],

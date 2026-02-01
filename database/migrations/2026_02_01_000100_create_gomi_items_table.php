@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('detail', 64)->nullable();
             $table->string('size', 64)->nullable();
             $table->string('gomi_type', 64)->nullable();
-            $table->string('fee', 64)->nullable();
+            $table->integer('fee')->nullable();
             $table->text('description')->nullable();
             $table->text('howto')->nullable();
             $table->text('words')->nullable();

@@ -169,7 +169,7 @@ class U370PopulationTest extends TestCase
     //   'total_count' => 100,
     //   'elder_count' => 60,
     // ]
-    public function test_360_030_make_array_1(): void
+    public function test_370_030_make_array_1(): void
     {
         $v = [
             [
@@ -232,7 +232,7 @@ class U370PopulationTest extends TestCase
     }
 
     // 要素分解3 中間配列１から各町の人数と高齢者数を読んで、高齢者率を計算する
-    public function test_360_040_test(): void
+    public function test_370_040_test(): void
     {
         $v = [
             "浜松市天竜区春野地区春野町大時" => [
@@ -261,7 +261,7 @@ class U370PopulationTest extends TestCase
 
     // 要素分解4 高齢化率の多い順に並べ替える
     // 要素分解5 上位3件を取得
-    public function test_360_050_orders()
+    public function test_370_050_orders()
     {
         $v = [
             'みらい市' => 60.0,
@@ -285,7 +285,7 @@ class U370PopulationTest extends TestCase
 
     // じぶんでやってみよう
     // ファイルを読んで
-    public function test_360_highest_elder_town(): void
+    public function test_370_060_highest_elder_town(): void
     {
         // 元データを読み込む
         //$filename = 'tests/Unit/data/populations_utf8.csv';
@@ -367,4 +367,39 @@ class U370PopulationTest extends TestCase
         $this->assertSame($a, $r);
     }
 
+
+    // 上級課題１
+    // 高齢化率の低い順に町を３件出力する
+    public function test_370_070_youngest_town(): void    
+    {
+        $this->assertTrue(true);
+    }
+
+    // 上級課題２
+    // ０歳児の多い順に町を３件出力する
+    public function test_370_080_happy_newborn_town(): void    
+    {
+        $this->assertTrue(true);
+    }
+
+    // 上級課題3
+    // 町ごとの平均年齢を算出する
+    public function test_380_090_average_age_by_town(): void    
+    {
+        $this->assertTrue(true);
+    }
+
+    // 上級課題4
+    // 男性と女性の平均年齢差を算出する
+    public function test_390_100_average_age_by_gender(): void
+    {
+        $this->assertTrue(true);
+    }
+
+    // 上級課題5
+    // 中央区、浜名区、天竜区の平均年齢を算出する
+    public function test_400_110_average_age_by_ward(): void
+    {
+        $this->assertTrue(true);
+    }
 }        

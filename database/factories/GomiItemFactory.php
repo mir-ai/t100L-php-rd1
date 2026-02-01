@@ -22,7 +22,7 @@ class GomiItemFactory extends Factory
             'detail' => fake()->word(),
             'size' => fake()->word(),
             'gomi_type' => fake()->word(),
-            'fee' => fake()->word(),
+            'fee' => fake()->randomNumber(3),
             'description' => fake()->text(),
             'howto' => fake()->text(),
             'words' => fake()->text(),

@@ -58,19 +58,7 @@ class GomiItemWebTest extends TestCase
         if (Route::has('r4.gomi_items.store')) {
           /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
           $user = User::find(1);
-          $item = [
-            'kana1' => substr(fake()->word(), 0, 1),
-            'name' => fake()->word(),
-            'detail' => fake()->word(),
-            'size' => fake()->word(),
-            'gomi_type' => fake()->word(),
-            'fee' => fake()->word(),
-            'description' => fake()->text(),
-            'howto' => fake()->text(),
-            'words' => fake()->text(),
-            'url' => fake()->text(),
-            'memo' => fake()->text(),
-          ];
+          $item = GomiItem::factory()->make()->toArray();
           $item[$this->string_column] = 'UNITTEST';
 
           $response = $this->actingAs($user)->call('POST', route('r4.gomi_items.store'), $item, [], [], []);
@@ -103,19 +91,7 @@ class GomiItemWebTest extends TestCase
           /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
           $user = User::find(1);
           $id = GomiItem::where($this->string_column, 'UNITTEST')->orderBy('id', 'desc')->value('id');
-          $item = [
-            'kana1' => substr(fake()->word(), 0, 1),
-            'name' => fake()->word(),
-            'detail' => fake()->word(),
-            'size' => fake()->word(),
-            'gomi_type' => fake()->word(),
-            'fee' => fake()->word(),
-            'description' => fake()->text(),
-            'howto' => fake()->text(),
-            'words' => fake()->text(),
-            'url' => fake()->text(),
-            'memo' => fake()->text(),
-          ];
+          $item = GomiItem::factory()->make()->toArray();
           $item[$this->string_column] = 'UNITTEST';
           $response = $this->actingAs($user)->call('PUT', route('r4.gomi_items.update', ['gomi_item' => $id,]), $item, [], [], []);
           $response->assertStatus(302);
@@ -160,19 +136,7 @@ class GomiItemWebTest extends TestCase
           /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
           $user = User::find(1);
           $id = GomiItem::where($this->string_column, 'UNITTEST')->orderBy('id', 'desc')->value('id');
-          $item = [
-            'kana1' => substr(fake()->word(), 0, 1),
-            'name' => fake()->word(),
-            'detail' => fake()->word(),
-            'size' => fake()->word(),
-            'gomi_type' => fake()->word(),
-            'fee' => fake()->word(),
-            'description' => fake()->text(),
-            'howto' => fake()->text(),
-            'words' => fake()->text(),
-            'url' => fake()->text(),
-            'memo' => fake()->text(),
-          ];
+          $item = GomiItem::factory()->make()->toArray();
           $item[$this->string_column] = 'UNITTEST';
           $response = $this->actingAs($user)->call('PATCH', route('r4.gomi_items.update_raw', ['gomi_item' => $id,]), $item, [], [], []);
           $response->assertStatus(302);
