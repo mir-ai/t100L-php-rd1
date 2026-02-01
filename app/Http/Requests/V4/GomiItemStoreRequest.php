@@ -2,10 +2,11 @@
 
 namespace App\Http\Requests\V4;
 
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
-use App\UseCases\GomiItemUseCase;
+use App\Models\GomiItem;
 use Illuminate\Validation\Rule;
+use App\UseCases\GomiItemUseCase;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Http\FormRequest;
 
 /**
   * ごみ分別モデルのフォームからの登録時の値検証
@@ -62,22 +63,7 @@ class GomiItemStoreRequest extends FormRequest
 
     public function attributes()
     {
-        return [
-            'id' => 'ID',
-            'kana1' => '行',
-            'name' => '品目',
-            'detail' => '詳細',
-            'size' => '大きさ・長さ',
-            'gomi_type' => '分別品目',
-            'fee' => '処理手数料',
-            'description' => '連絡ごみ備考',
-            'howto' => '排出方法･備考',
-            'words' => 'URLに関連するワード',
-            'url' => '浜松市公式Webサイト 参考ページURL',
-            'memo' => '分別品目の補足',
-            'created_at' => '登録日時',
-            'updated_at' => '更新日時'
-        ];
+        return GomiItem::$columns;
     }
 
     /**

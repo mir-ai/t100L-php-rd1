@@ -158,7 +158,7 @@ class Sample extends Model
     }
 
     // 変更履歴等で表示するため、カラム名とラベルの配列を保持
-    public $columns = [
+    public static $columns = [
         'id' => 'ID',
         'name' => '名前',
         'price' => '値段',

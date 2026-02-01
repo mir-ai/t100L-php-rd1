@@ -15,6 +15,7 @@
       <input class="form-control form-control-lg" type="file" id="{{ $input }}" name="{{ $input }}" accept=".xls,.xlsx">
 
       <p class="text-secondary mt-1">※ 直前にエクセルをダウンロードして、それを修正してアップロードして下さい。（そうしないと、誰かの別の変更が上書きされてしまう恐れがあります。）</p>
+      <p class="text-secondary mt-1">※ 20000件未満にして下さい。</p>
 
       <div class="row mt-5">
         <div class="col-sm-9 order-sm-2">

@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests\V4;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Sample;
 use App\UseCases\SampleUseCase;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 /**
   * サンプルテーブルモデルのフォームからの直接更新時の値検証
@@ -53,15 +54,7 @@ class SampleUpdateRawRequest extends FormRequest
 
     public function attributes()
     {
-        return [
-            'id' => 'ID',
-            'name' => '名前',
-            'price' => '値段',
-            'memo' => 'メモ',
-            'seq' => '順序',
-            'created_at' => '登録日時',
-            'updated_at' => '更新日時'
-        ];
+        return Sample::$columns;
     }
 
     /**

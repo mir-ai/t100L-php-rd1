@@ -13,6 +13,49 @@
 
 namespace App\Models{
 /**
+ * ごみ分別モデルのオブジェクト定義
+ *
+ * @property int $id
+ * @property string|null $kana1
+ * @property string $name
+ * @property string|null $detail
+ * @property string|null $size
+ * @property string|null $gomi_type
+ * @property string|null $fee
+ * @property string|null $description
+ * @property string|null $howto
+ * @property string|null $words
+ * @property string|null $url
+ * @property string|null $memo
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property string|null $deleted_at
+ * @property-read mixed $item_title
+ * @method static \Database\Factories\GomiItemFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem whereDetail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem whereFee($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem whereGomiType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem whereHowto($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem whereKana1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem whereMemo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem whereSize($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem whereUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GomiItem whereWords($value)
+ */
+	class GomiItem extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * アップロードファイルモデルのオブジェクト定義
  *
  * @property int $id
@@ -43,6 +86,19 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|MirSerializedVar whereVarYymm($value)
  */
 	class MirSerializedVar extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 人口モデルのオブジェクト定義
+ *
+ * @property-read mixed $item_title
+ * @method static \Database\Factories\PopulationFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Population newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Population newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Population query()
+ */
+	class Population extends \Eloquent {}
 }
 
 namespace App\Models{

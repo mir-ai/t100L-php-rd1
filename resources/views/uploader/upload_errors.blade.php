@@ -5,6 +5,18 @@
 
   <div class="row">
     <div class="col-lg-12">
+      <div class="row">
+        <div class="col-sm-6 mt-4">
+          <a href="{{ $back }}"
+            class="btn btn-warning form-control btn-lg">戻る</a>
+        </div>
+        <div class="col-sm-6 mt-4">
+          <a href="{{ $back }}"
+            class="btn btn-success form-control btn-lg">再アップロード</a>
+        </div>
+        <div class="col-sm-6">
+        </div>
+      </div>
 
       <p class="text-danger">
         以下のエラーが見つかりました。ファイルを修正して、またアップロードして下さい。
@@ -57,19 +69,6 @@
             @endfor
           </tbody>
         </table>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-6 mt-4">
-          <a href="{{ $back }}"
-            class="btn btn-warning form-control btn-lg">戻る</a>
-        </div>
-        <div class="col-sm-6 mt-4">
-          <a href="{{ $back }}"
-            class="btn btn-success form-control btn-lg">再アップロード</a>
-        </div>
-        <div class="col-sm-6">
-        </div>
       </div>
 
     </div>

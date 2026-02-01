@@ -13,31 +13,34 @@ use Illuminate\Support\Facades\Auth;
 //use Illuminate\Database\Eloquent\Relations\HasOne;
 //use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 //use Illuminate\Database\Eloquent\Casts\Attribute;
-use App\Traits\GomiItemObservable;
+use App\Traits\PopulationObservable;
 use \DateTimeInterface;
 
 /**
-  * ごみ分別モデルのオブジェクト定義
+  * 人口モデルのオブジェクト定義
   */
-class GomiItem extends Model
+class Population extends Model
 {
     use HasFactory;
     //use SoftDeletes;
-    //use GomiItemObservable; # ←TODO: モデル変更を監視したい場合はコメントを外す
+    //use PopulationObservable; # ←TODO: モデル変更を監視したい場合はコメントを外す
 
     protected $fillable = [
         'id',
-        'kana1',
-        'name',
-        'detail',
-        'size',
-        'gomi_type',
-        'fee',
+        'pref_code',
+        'pref_name',
+        'city_name',
+        'yyyymm',
+        'ward_code',
+        'ward_name',
+        'district_name',
+        'oaza_code',
+        'oaza_name',
+        'age',
+        'total_count',
+        'male_count',
+        'female_count',
         'description',
-        'howto',
-        'words',
-        'url',
-        'memo',
         'created_at',
         'updated_at',
     ];
@@ -166,18 +169,21 @@ class GomiItem extends Model
 
     // 変更履歴等で表示するため、カラム名とラベルの配列を保持
     public static $columns = [
-        'id' => 'ID',
-        'kana1' => '行',
-        'name' => '品目',
-        'detail' => '詳細',
-        'size' => '大きさ・長さ',
-        'gomi_type' => '分別品目',
-        'fee' => '処理手数料',
-        'description' => '連絡ごみ備考',
-        'howto' => '排出方法･備考',
-        'words' => 'URLに関連するワード',
-        'url' => '浜松市公式Webサイト 参考ページURL',
-        'memo' => '分別品目の補足',
+        'id' => 'NO',
+        'pref_code' => '都道府県コード又は市区町村コード',
+        'pref_name' => '都道府県',
+        'city_name' => '市区町村名',
+        'yyyymm' => '対象年月',
+        'ward_code' => '区CD',
+        'ward_name' => '区',
+        'district_name' => '地区',
+        'oaza_code' => '大字CD',
+        'oaza_name' => '大字',
+        'age' => '年齢',
+        'total_count' => '合計',
+        'male_count' => '男性',
+        'female_count' => '女性',
+        'description' => '備考',
         'created_at' => '登録日時',
         'updated_at' => '更新日時'
     ];

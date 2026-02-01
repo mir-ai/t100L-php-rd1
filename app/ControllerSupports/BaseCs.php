@@ -122,8 +122,12 @@ abstract class BaseCs
         }
 
         if (count($uploaded_matrix) > $this->upload_max) {
+            $errors = [
+                '1,1' => "データ件数が{$this->upload_max}件を超えています。{$this->upload_max}件以内に分割してください。",
+            ];
+
             return [
-                'content_errors' => "データ件数が{$this->upload_max}件を超えています。{$this->upload_max}件以内に分割してください。",
+                'content_errors' => $errors,
                 'uploaded_matrix' => $uploaded_matrix,
             ];
         }
@@ -395,14 +399,17 @@ abstract class BaseCs
             // 保存前に、連想配列の加工
             $item = $this->beforeSaveUploadedItem($item);
 
-            // 登録・更新するカラムを絞る
-            if ($save_columns) {
-                $save_columns[] = 'Delete1';
-                $item = Arr::only($item, $save_columns);
+            if (! $save_columns) {
+                $save_columns = array_keys($this->getExportKvs());
             }
 
+            // 登録・更新するカラムを絞る
+            $save_columns[] = 'Delete1';
+            $item = Arr::only($item, $save_columns);
+
             // 登録するカラムを絞る
-            $item = Arr::only($item, array_keys($this->getExportKvs()));
+            $only_columns = array_merge(array_keys($this->getExportKvs()), ['Delete1']);
+            $item = Arr::only($item, $only_columns);
 
             logger("IMPORT {$label} y={$y} id={$id}", $item);
 
@@ -421,20 +428,15 @@ abstract class BaseCs
                 // 差分取得のため、元の値を保持。カラムは $item に合わせる
                 $old_item = $record->toArray();
                 $old_item = Arr::only($old_item, array_keys($item));
-                logger("UPDATE 111 ", $item);
-                logger("UPDATE 222 ", $record->toArray());
 
                 // パスワードはいかなる場合も変更しない
                 unset($item['password']);
 
                 $record->update($item);
 
-                logger("UPDATE 333 ", $item);
-
                 if (! $is_same) {
                     // 変更あり
                     $cnt['update']++;
-                    logger("UPDATE {$label} y={$y} id={$id}", $item);
 
                     // 変更点を記録するために呼び出し
                     if (gettype($id) == 'integer') {
