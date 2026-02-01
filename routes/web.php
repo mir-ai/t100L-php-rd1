@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\V4\SampleV4Controller;
 use App\Http\Controllers\V4\GomiItemV4Controller;
 use App\Http\Controllers\V4\PopulationV4Controller;
+use App\Http\Controllers\V4\EventV4Controller;
 
 Route::get('/', function () {
     return view('welcome');
@@ -97,6 +98,30 @@ if (Route::group(['middleware' => 'auth.very_basic'], function () {
                 // 一覧、詳細、登録、修正、削除はここに
                 Route::resource('populations', PopulationV4Controller::class);
             })->whereNumber('population');
+
+            // イベント管理
+            Route::controller(EventV4Controller::class)->group(function () {
+                // イベント管理
+                Route::prefix('/events')->name('events.')->group(function () {
+                    // ダウンロード画面
+                    Route::get('/download', 'download')->name('download');
+
+                    // アップロード画面
+                    Route::get('/uploader', 'uploader')->name('uploader');
+                    
+                    // アップロードファイルと現在の内容との差分表示
+                    Route::post('/upload_diff/wfps', 'upload_diff')->name('upload_diff');
+
+                    // アップロード情報で更新
+                    Route::post('/upload_commit/{data_key}', 'upload_commit')->name('upload_commit');
+
+                    // 最後の検索条件で一覧に戻る
+                    Route::get('/last_conds', 'last_conds')->name('last_conds');
+                });
+
+                // 一覧、詳細、登録、修正、削除はここに
+                Route::resource('events', EventV4Controller::class);
+            })->whereNumber('event');
 
             //  New model here
         });
