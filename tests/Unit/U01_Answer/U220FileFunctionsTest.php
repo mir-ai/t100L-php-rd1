@@ -153,7 +153,7 @@ class U220FileFunctionsTest extends TestCase
     public function test_220_170_read_tsv(): void
     {
         // 各データがタブ(\t)で区切られた TSV ファイルの読み込みサンプル
-        $filename = 'tests/Unit/data/bunbetukubunitiran_small.tsv';
+        $filename = 'tests/Unit/data/gomi_items_small_utf8.tsv';
         $contents = file_get_contents($filename);
         if (! $contents) {
             echo "{$filename} を読み込めません。";
@@ -241,7 +241,7 @@ class U220FileFunctionsTest extends TestCase
     public function test_220_180_read_csv(): void
     {
         // 元データを読み込む
-        $filename = 'tests/Unit/data/221309_hamamatsu_event_utf8.csv';
+        $filename = 'tests/Unit/data/events_utf8.csv';
         $is_first = true;
         $col_names = [];
         $all_items = [];
@@ -291,7 +291,7 @@ class U220FileFunctionsTest extends TestCase
                 "説明" => "【内容】設備改修工事等により予約の一部を停止します。",
                 "料金(基本)" => "",
                 "料金(詳細)" => "",
-                "連絡先名称" => "工事に関すること\u{3000}天竜区まちづくり推進課\u{3000}（053）922-0086\r\n施設利用に関すること\u{3000}浜松市天竜壬生ホール\u{3000}（053）922-3301",
+                "連絡先名称" => "工事に関すること\u{3000}天竜区まちづくり推進課\u{3000}（053）922-0086\n施設利用に関すること\u{3000}浜松市天竜壬生ホール\u{3000}（053）922-3301",
                 "連絡先電話番号" => "",
                 "連絡先内線番号" => "",
                 "主催者" => "",

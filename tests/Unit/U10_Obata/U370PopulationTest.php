@@ -26,7 +26,7 @@ class U370PopulationTest extends TestCase
     // 要素分解1 ファイルから各項目を読んで取得する
     public function test_370_read_csv(): void
     {
-        $filename = 'tests/Unit/data/town_age_population_small.csv';
+        $filename = 'tests/Unit/data/populations_small_utf8.csv';
         $contents = file_get_contents($filename);
         if (! $contents) {
             echo "{$filename} を読み込めません。";
@@ -288,8 +288,8 @@ class U370PopulationTest extends TestCase
     public function test_360_highest_elder_town(): void
     {
         // 元データを読み込む
-        //$filename = 'tests/Unit/data/town_age_population.csv';
-        $filename = 'tests/Unit/data/town_age_population_small.csv';
+        //$filename = 'tests/Unit/data/populations_utf8.csv';
+        $filename = 'tests/Unit/data/populations_small_utf8.csv';
         $contents = file_get_contents($filename);
         if (! $contents) {
             echo "{$filename} を読み込めません。";

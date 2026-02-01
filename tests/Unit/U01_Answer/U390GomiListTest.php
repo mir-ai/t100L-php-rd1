@@ -47,14 +47,14 @@ class U390GomiListTest extends TestCase
     }
 
     // じぶんでやってみよう
-    // tests/Unit/data/bunbetukubunitiran.tsv (または tests/Unit/data/bunbetukubunitiran_small.tsv)
+    // tests/Unit/data/gomi_items_utf8.tsv (または tests/Unit/data/gomi_items_small_utf8.tsv)
     // を読み込んで、処理手数料が1240円のごみの、「品目」と「詳細」と「大きさ・長さ」欄を結合して配列に出力します。
 
     public function test_390_expensive_gomi(): void
     {
         // 元データを読み込む
-        // $filename = 'tests/Unit/data/bunbetukubunitiran_small.tsv';
-        $filename = 'tests/Unit/data/bunbetukubunitiran.tsv';
+        // $filename = 'tests/Unit/data/gomi_items_small_utf8.tsv';
+        $filename = 'tests/Unit/data/gomi_items_utf8.tsv';
         $contents = file_get_contents($filename);
         if (! $contents) {
             echo "{$filename} を読み込めません。";

@@ -28,8 +28,8 @@ class U400EventTest extends TestCase
     public function test_400_popular_places(): void
     {
         // 元データを読み込む
-        $filename = 'tests/Unit/data/221309_hamamatsu_event_utf8.csv';
-        // $filename = 'tests/Unit/data/221309_hamamatsu_event_utf8_small.csv';
+        $filename = 'tests/Unit/data/events_utf8.csv';
+        // $filename = 'tests/Unit/data/events_utf8_small.csv';
         $is_first = true;
         $col_names = [];
         $all_items = [];
