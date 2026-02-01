@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\V4\SampleV4Controller;
+use App\Http\Controllers\V4\GomiItemV4Controller;
 
 Route::get('/', function () {
     return view('welcome');
@@ -47,6 +48,32 @@ if (Route::group(['middleware' => 'auth.very_basic'], function () {
                 // 一覧、詳細、登録、修正、削除はここに
                 Route::resource('samples', SampleV4Controller::class);
             })->whereNumber('sample');
+
+            // ごみ分別管理
+            Route::controller(GomiItemV4Controller::class)->group(function () {
+                // ごみ分別管理
+                Route::prefix('/gomi_items')->name('gomi_items.')->group(function () {
+                    // ダウンロード画面
+                    Route::get('/download', 'download')->name('download');
+
+                    // アップロード画面
+                    Route::get('/uploader', 'uploader')->name('uploader');
+                    
+                    // アップロードファイルと現在の内容との差分表示
+                    Route::post('/upload_diff/wfps', 'upload_diff')->name('upload_diff');
+
+                    // アップロード情報で更新
+                    Route::post('/upload_commit/{data_key}', 'upload_commit')->name('upload_commit');
+
+                    // 最後の検索条件で一覧に戻る
+                    Route::get('/last_conds', 'last_conds')->name('last_conds');
+                });
+
+                // 一覧、詳細、登録、修正、削除はここに
+                Route::resource('gomi_items', GomiItemV4Controller::class);
+            })->whereNumber('gomi_item');
+
+            //  New model here
         });
 
     });
