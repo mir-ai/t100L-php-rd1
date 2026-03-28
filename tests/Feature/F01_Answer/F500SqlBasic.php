@@ -8,6 +8,23 @@ use Tests\TestCase;
 
 class F500SqlBasic extends TestCase
 {
+    /**
+     * SQL の練習
+     * 
+     * ！！！重要！！！
+     * 
+     * 最初に一度、ターミナルで
+     * php artisan migrate
+     * を実行すること
+     * 
+     *    INFO  Running migrations.
+     *    2026_02_15_201728_create_animals_tables ....................... 86.81ms DONE
+     *    2026_02_15_201738_create_owners_tables ........................ 87.13ms DONE
+     * 
+     * と表示されたら成功。(このユニットテストの実行に必要なテーブルがmysql上に作成される)
+     * 
+     */
+
     // insert
     public function test_500_010_sql_insert_1(): void
     {
@@ -18,7 +35,10 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [1, 'やぎ']);
 
         // nameをid順で取得する
-        $animals = DB::select('select name from animals');
+        $animals = DB::select('
+           select name
+             from animals
+        ');
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $names = [];
@@ -26,7 +46,11 @@ class F500SqlBasic extends TestCase
             $names[] = $animal->name;
         }
 
-        $expected = ['やぎ'];
+        // QUIZ
+        $expected = [
+            'やぎ'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $names);
     }
@@ -43,7 +67,11 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
         // nameをid順で取得する
-        $animals = DB::select('select name from animals order by id');
+        $animals = DB::select('
+          select name
+            from animals
+           order by id
+        ');
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $names = [];
@@ -51,7 +79,13 @@ class F500SqlBasic extends TestCase
             $names[] = $animal->name;
         }
 
-        $expected = ['やぎ', 'うさぎ', 'ひつじ'];
+        // QUIZ
+        $expected = [
+            'やぎ',
+            'うさぎ',
+            'ひつじ'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $names);
     }
@@ -68,7 +102,11 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
         // nameをidの逆順で取得する　(order by id desc ← ★★★注目)
-        $animals = DB::select('select name from animals order by id desc');
+        $animals = DB::select('
+           select name
+             from animals
+            order by id desc
+        ');
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $names = [];
@@ -76,7 +114,13 @@ class F500SqlBasic extends TestCase
             $names[] = $animal->name;
         }
 
-        $expected = ['ひつじ', 'うさぎ', 'やぎ'];
+        // QUIZ
+        $expected = [
+            'ひつじ',
+            'うさぎ',
+            'やぎ'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $names);
     }
@@ -93,10 +137,16 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
         // 動物テーブルのデータをすべて削除する ← ★★★注目
-        DB::delete('delete from animals');
+        DB::delete('
+          delete from animals
+        ');
 
         // nameを取得する
-        $animals = DB::select('select name from animals order by id');
+        $animals = DB::select('
+          select name
+            from animals
+           order by id
+        ');
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $names = [];
@@ -104,8 +154,9 @@ class F500SqlBasic extends TestCase
             $names[] = $animal->name;
         }
 
-        // 結果はナシになる
+        // QUIZ
         $expected = [];
+        // /QUIZ
 
         $this->assertSame($expected, $names);
     }
@@ -122,15 +173,25 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
         // nameをid順で取得する (★idとnameを取得していることに注目)
-        $animals = DB::select('select id, name from animals order by id');
+        $animals = DB::select('
+           select id, name
+             from animals
+            order by id
+        ');
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
         foreach ($animals as $animal) {
-            $actual[] = "{$animal->id}★{$animal->name}";
+            $actual[] = "{$animal->id},{$animal->name}";
         }
 
-        $expected = ['1★やぎ', '2★うさぎ', '3★ひつじ'];
+        // QUIZ
+        $expected = [
+            '1,やぎ',
+            '2,うさぎ',
+            '3,ひつじ'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -147,7 +208,12 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
         // nameをid順で取得する (★where id > 1に注目)
-        $animals = DB::select('select name from animals where id > 1 order by id');
+        $animals = DB::select('
+          select name
+            from animals
+           where id > 1
+           order by id
+        ');
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -155,7 +221,12 @@ class F500SqlBasic extends TestCase
             $actual[] = $animal->name;
         }
 
-        $expected = ['うさぎ', 'ひつじ'];
+        // QUIZ
+        $expected = [
+            'うさぎ',
+            'ひつじ'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -172,7 +243,12 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
         // nameをid順で取得する (★where id > 1に注目)
-        $animals = DB::select("select name from animals where name = 'やぎ' order by id");
+        $animals = DB::select("
+          select name
+            from animals
+           where name = 'やぎ'
+           order by id
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -180,7 +256,11 @@ class F500SqlBasic extends TestCase
             $actual[] = $animal->name;
         }
 
-        $expected = ['やぎ'];
+        // QUIZ
+        $expected = [
+            'やぎ'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -197,7 +277,12 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
         // nameをid順で取得する (★where id > 1に注目)
-        $animals = DB::select("select name from animals where id > 1 and id < 3");
+        $animals = DB::select("
+          select name
+            from animals
+           where id > 1
+             and id < 3
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -205,7 +290,11 @@ class F500SqlBasic extends TestCase
             $actual[] = $animal->name;
         }
 
-        $expected = ['うさぎ'];
+        // QUIZ
+        $expected = [
+            'うさぎ'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -222,7 +311,12 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
         // nameをid順で取得する (★where id > 1に注目)
-        $animals = DB::select("select name from animals where id = 1 or name = 'ひつじ' order by id");
+        $animals = DB::select("
+           select name
+             from animals
+            where id = 1 or name = 'ひつじ'
+            order by id
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -230,7 +324,12 @@ class F500SqlBasic extends TestCase
             $actual[] = $animal->name;
         }
 
-        $expected = ['やぎ', 'ひつじ'];
+        // QUIZ
+        $expected = [
+            'やぎ',
+            'ひつじ'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -244,10 +343,13 @@ class F500SqlBasic extends TestCase
         // 値を登録する
         DB::insert('insert into animals (id, name, type) values (?, ?, ?)', [1, 'やぎ', '四足']);
         DB::insert('insert into animals (id, name, type) values (?, ?, ?)', [2, 'うさぎ', '四足']);
-        DB::insert('insert into animals (id, name, type) values (?, ?, ?)', [3, 'ひつじ', null]);
+        DB::insert('insert into animals (id, name, type) values (?, ?, ?)', [3, 'とり', null]);
 
         // nameをid順で取得する (★where type is null に注目)
-        $animals = DB::select("select name from animals where type is null");
+        $animals = DB::select("
+           select name
+             from animals
+            where type is null");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -255,7 +357,11 @@ class F500SqlBasic extends TestCase
             $actual[] = $animal->name;
         }
 
-        $expected = ['ひつじ'];
+        // QUIZ
+        $expected = [
+            'とり'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -272,7 +378,12 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name, type) values (?, ?, ?)', [3, 'ひつじ', null]);
 
         // nameをid順で取得する (★where type is not null に注目)
-        $animals = DB::select("select name from animals where type is not null order by id");
+        $animals = DB::select("
+          select name
+            from animals
+           where type is not null
+           order by id
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -280,7 +391,12 @@ class F500SqlBasic extends TestCase
             $actual[] = $animal->name;
         }
 
-        $expected = ['やぎ', 'うさぎ'];
+        // QUIZ
+        $expected = [
+            'やぎ',
+            'うさぎ'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -299,7 +415,12 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [5, 'うさぎ']);
 
         // nameをid順で取得する (★where type is not null に注目)
-        $animals = DB::select("select name from animals where name like 'や%' order by id");
+        $animals = DB::select("
+           select name
+             from animals
+            where name like 'や%'
+            order by id
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -307,7 +428,13 @@ class F500SqlBasic extends TestCase
             $actual[] = $animal->name;
         }
 
-        $expected = ['やぎ', 'やっくる', 'やんばるくいな'];
+        // QUIZ
+        $expected = [
+            'やぎ',
+            'やっくる',
+            'やんばるくいな'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -325,7 +452,12 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [4, 'うさぎ']);
 
         // nameをid順で取得する (★where type is not null に注目)
-        $animals = DB::select("select name from animals where name like '%に' order by id");
+        $animals = DB::select("
+          select name
+            from animals
+           where name like '%に'
+           order by id
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -333,7 +465,13 @@ class F500SqlBasic extends TestCase
             $actual[] = $animal->name;
         }
 
-        $expected = ['かに', 'わに', 'うに'];
+        // QUIZ
+        $expected = [
+            'かに',
+            'わに',
+            'うに'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -352,7 +490,12 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [5, 'ひつじ']);
 
         // nameをid順で取得する (★where type is not null に注目)
-        $animals = DB::select("select name from animals where name like '%さ%' order by id");
+        $animals = DB::select("
+          select name
+            from animals
+           where name like '%さ%'
+           order by id
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -360,7 +503,14 @@ class F500SqlBasic extends TestCase
             $actual[] = $animal->name;
         }
 
-        $expected = ['うさぎ', 'かささぎ', 'さる', 'あさ'];
+        // QUIZ
+        $expected = [
+            'うさぎ',
+            'かささぎ',
+            'さる',
+            'あさ'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -379,7 +529,12 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [5, 'すずめ']);
 
         // nameをid順で取得する (★where type is not null に注目)
-        $animals = DB::select("select name from animals order by id limit 2");
+        $animals = DB::select("
+          select name
+            from animals
+           order by id
+           limit 2
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -387,7 +542,12 @@ class F500SqlBasic extends TestCase
             $actual[] = $animal->name;
         }
 
-        $expected = ['やぎ', 'うさぎ'];
+        // QUIZ
+        $expected = [
+            'やぎ',
+            'うさぎ'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -406,7 +566,13 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [5, 'すずめ']);
 
         // nameをid順で取得する (★where type is not null に注目)
-        $animals = DB::select("select name from animals order by id limit 2 offset 2");
+        $animals = DB::select("
+          select name
+            from animals
+           order by id
+           limit 2
+           offset 2
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -414,7 +580,12 @@ class F500SqlBasic extends TestCase
             $actual[] = $animal->name;
         }
 
-        $expected = ['ひつじ', 'はと'];
+        // QUIZ
+        $expected = [
+            'ひつじ',
+            'はと'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -431,9 +602,15 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
         // nameをid順で取得する (★where id > 1に注目)
-        $count = DB::scalar("select count(*) from animals");
+        $count = DB::scalar("
+          select count(*)
+            from animals
+        ");
 
+        // 件数
+        // QUIZ
         $expected = 3;
+        // /QUIZ
 
         $this->assertSame($expected, $count);
     }
@@ -450,9 +627,15 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name, weight) values (?, ?, ?)', [3, 'ひつじ', 1]);
 
         // ★★★ sum に注目
-        $sum = DB::scalar("select sum(weight) from animals");
+        $sum = DB::scalar("
+          select sum(weight)
+            from animals
+        ");
 
+        // sum(weight)
+        // QUIZ
         $expected = 6.0;
+        // /QUIZ
 
         $this->assertSame($expected, $sum);
     }
@@ -469,10 +652,16 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name, speed) values (?, ?, ?)', [3, 'ひつじ', 5]);
 
         // ★★★ average に注目
-        $speed = DB::scalar("select avg(speed) from animals");
+        $speed = DB::scalar("
+          select avg(speed)
+            from animals
+        ");
         $speed = intval($speed);
 
+        // avg(speed)
+        // QUIZ
         $expected = 10;
+        // /QUIZ
 
         $this->assertSame($expected, $speed);
     }
@@ -489,9 +678,15 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name, speed) values (?, ?, ?)', [3, 'ひつじ', 5]);
 
         // ★★★ max に注目
-        $speed = DB::scalar("select max(speed) from animals");
+        $speed = DB::scalar("
+          select max(speed)
+            from animals
+        ");
 
+        // max(speed)
+        // QUIZ
         $expected = 15;
+        // /QUIZ
 
         $this->assertSame($expected, $speed);
     }
@@ -508,9 +703,15 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name, speed) values (?, ?, ?)', [3, 'ひつじ', 5]);
 
         // ★★★ min に注目
-        $speed = DB::scalar("select min(speed) from animals");
+        $speed = DB::scalar("
+          select min(speed)
+            from animals
+        ");
 
+        // min(speed)
+        // QUIZ
         $expected = 5;
+        // /QUIZ
 
         $this->assertSame($expected, $speed);
     }
@@ -528,7 +729,12 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, type, name) values (?, ?, ?)', [4, '二足', 'はと']);
 
         // ★★★ group by type に注目
-        $animals = DB::select("select type, count(*) as cnt from animals group by type order by type");
+        $animals = DB::select("
+           select type, count(*) as cnt
+             from animals
+            group by type
+            order by type
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -536,10 +742,13 @@ class F500SqlBasic extends TestCase
             $actual[] = "{$animal->type}x{$animal->cnt}種類";
         }
 
+        // 
+        // QUIZ
         $expected = [
             '二足x1種類',
             '四足x3種類',
         ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -557,7 +766,12 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, type, name, weight) values (?, ?, ?, ?)', [4, '二足', 'はと',  1]);
 
         // ★★★ group by type に注目
-        $animals = DB::select("select type, sum(weight) as weight_sum from animals group by type order by type");
+        $animals = DB::select("
+          select type, sum(weight) as weight_sum
+            from animals
+           group by type
+           order by type
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -565,10 +779,12 @@ class F500SqlBasic extends TestCase
             $actual[] = "{$animal->type}x{$animal->weight_sum}kg";
         }
 
+        // QUIZ
         $expected = [
             '二足x1kg',
             '四足x9kg',
         ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -586,7 +802,11 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, type, name) values (?, ?, ?)', [4, '二足', 'はと']);
 
         // ★★★ group by type に注目
-        $animals = DB::select("select distinct type from animals order by type");
+        $animals = DB::select("
+           select distinct type
+             from animals
+            order by type
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -594,10 +814,12 @@ class F500SqlBasic extends TestCase
             $actual[] = $animal->type;
         }
 
+        // QUIZ
         $expected = [
             '二足',
             '四足',
         ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -618,7 +840,11 @@ class F500SqlBasic extends TestCase
         DB::update('update animals set name = ? where id = ?', ['ひつじぴょん', 3]);
 
         // nameをid順で取得する
-        $animals = DB::select("select name from animals order by id");
+        $animals = DB::select("
+          select name
+            from animals
+           order by id
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -626,7 +852,13 @@ class F500SqlBasic extends TestCase
             $actual[] = $animal->name;
         }
 
-        $expected = ['やぎぴょん', 'うさぎぴょん', 'ひつじぴょん'];
+        // QUIZ
+        $expected = [
+            'やぎぴょん',
+            'うさぎぴょん',
+            'ひつじぴょん'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -645,7 +877,11 @@ class F500SqlBasic extends TestCase
         DB::update("update animals set type = '哺乳類'");
 
         // nameをid順で取得する
-        $animals = DB::select("select name, type from animals order by id");
+        $animals = DB::select("
+           select name, type
+             from animals
+            order by id
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -653,11 +889,13 @@ class F500SqlBasic extends TestCase
             $actual[] = "{$animal->name}は{$animal->type}です";
         }
 
+        // QUIZ
         $expected = [
             'やぎは哺乳類です',
             'うさぎは哺乳類です',
             'ひつじは哺乳類です'
         ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -672,11 +910,19 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name, type) values (?, ?, ?)', [2, 'うさぎ', '四足']);
         DB::insert('insert into animals (id, name, type) values (?, ?, ?)', [3, 'ひつじ', '四足']);
 
-        // 値を更新する(whereをつけないことに注目)
-        DB::update("update animals set type = '哺乳類' where id > 1");
+        // 値を更新する(whereをつけたことに注目)
+        DB::update("
+          update animals
+             set type = '哺乳類'
+           where id > 1
+        ");
 
         // nameをid順で取得する
-        $animals = DB::select("select name, type from animals order by id");
+        $animals = DB::select("
+          select name, type
+            from animals
+           order by id
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -684,11 +930,13 @@ class F500SqlBasic extends TestCase
             $actual[] = "{$animal->name}は{$animal->type}です";
         }
 
+        // QUIZ
         $expected = [
             'やぎは四足です',
             'うさぎは哺乳類です',
             'ひつじは哺乳類です'
         ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -703,11 +951,19 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name, type) values (?, ?, ?)', [2, 'うさぎ', '四足']);
         DB::insert('insert into animals (id, name, type) values (?, ?, ?)', [3, 'ひつじ', '四足']);
 
-        // 値を更新する(whereをつけないことに注目)
-        DB::update("update animals set type = '哺乳類' where id in (1, 3)");
+        // 値を更新する
+        DB::update("
+          update animals
+             set type = '哺乳類'
+           where id in (1, 3)
+        ");
 
         // nameをid順で取得する
-        $animals = DB::select("select name, type from animals order by id");
+        $animals = DB::select("
+           select name, type
+             from animals
+            order by id
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -715,11 +971,13 @@ class F500SqlBasic extends TestCase
             $actual[] = "{$animal->name}は{$animal->type}です";
         }
 
+        // QUIZ
         $expected = [
             'やぎは哺乳類です',
             'うさぎは四足です',
             'ひつじは哺乳類です'
         ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -742,13 +1000,13 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name, owner_id) values (?, ?, ?)', [3, 'ひつじ', 2]);
         DB::insert('insert into animals (id, name, owner_id) values (?, ?, ?)', [4, 'とら', null]);
 
-        $animals = DB::select(
-            "select animals.name as animals_name," .
-            "       owners.name as owners_name " .
-            "  from animals" .
-            " inner join owners on animals.owner_id = owners.id" .
-            " order by animals.id"
-        );
+        $animals = DB::select("
+            select animals.name as animals_name,
+                   owners.name as owners_name 
+              from animals
+             inner join owners on animals.owner_id = owners.id
+             order by animals.id
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -756,11 +1014,13 @@ class F500SqlBasic extends TestCase
             $actual[] = "{$animal->animals_name}の飼い主は{$animal->owners_name}さんです";
         }
 
+        // QUIZ
         $expected = [
             'やぎの飼い主はたろうさんです',
             'うさぎの飼い主ははなこさんです',
             'ひつじの飼い主ははなこさんです',
         ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -783,13 +1043,13 @@ class F500SqlBasic extends TestCase
         DB::insert('insert into animals (id, name, owner_id) values (?, ?, ?)', [3, 'ひつじ', 2]);
         DB::insert('insert into animals (id, name, owner_id) values (?, ?, ?)', [4, 'とら', null]);
 
-        $animals = DB::select(
-            "select animals.name as animals_name," .
-            "       owners.name as owners_name " .
-            "  from animals" .
-            "  left join owners on animals.owner_id = owners.id" .
-            " order by animals.id"
-        );
+        $animals = DB::select("
+            select animals.name as animals_name,
+                   owners.name as owners_name
+              from animals
+              left join owners on animals.owner_id = owners.id
+             order by animals.id
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -797,12 +1057,14 @@ class F500SqlBasic extends TestCase
             $actual[] = "{$animal->animals_name}の飼い主は{$animal->owners_name}さんです";
         }
 
+        // QUIZ
         $expected = [
             'やぎの飼い主はたろうさんです',
             'うさぎの飼い主ははなこさんです',
             'ひつじの飼い主ははなこさんです',
             'とらの飼い主はさんです',
         ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -829,7 +1091,11 @@ class F500SqlBasic extends TestCase
         DB::update('update animals set name = ? where id = ?', ['ひつじぴょん', 3]);
 
         // nameをid順で取得する
-        $animals = DB::select("select name from animals order by id");
+        $animals = DB::select("
+          select name
+            from animals
+           order by id
+        ");
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -837,7 +1103,13 @@ class F500SqlBasic extends TestCase
             $actual[] = $animal->name;
         }
 
-        $expected = ['やぎ', 'うさぎ', 'ひつじぴょん'];
+        // QUIZ
+        $expected = [
+            'やぎ',
+            'うさぎ',
+            'ひつじぴょん'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }    
@@ -863,14 +1135,24 @@ class F500SqlBasic extends TestCase
         DB::commit();
 
         // nameをid順で取得する
-        $animals = DB::select("select name from animals order by id");
+        $animals = DB::select("
+          select name
+            from animals
+           order by id
+        ");
 
         $actual = [];
         foreach ($animals as $animal) {
             $actual[] = $animal->name;
         }
 
-        $expected = ['やぎぴょん', 'うさぎぴょん', 'ひつじぴょん'];
+        // QUIZ
+        $expected = [
+            'やぎぴょん',
+            'うさぎぴょん',
+            'ひつじぴょん'
+        ];
+        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }        
