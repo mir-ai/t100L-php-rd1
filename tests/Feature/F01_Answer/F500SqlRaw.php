@@ -6,7 +6,7 @@ namespace Tests\Feature;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
-class F500SqlBasic extends TestCase
+class F500SqlRaw extends TestCase
 {
     /**
      * SQL の練習
