@@ -1,6 +1,6 @@
-# 430L 警報通知システム
+# t100L-php-rd1
 
-気象警報、地震震度、河川水位、雨量、停電などを通知するシステムです。
+PHPの基礎を学習するためのプロジェクトです。
 
 ## 作者
 
@@ -22,27 +22,6 @@
 ## 使用している主な技術
 
 ![PHP](https://img.shields.io/badge/-PHP82-777BB4.svg?logo=php&style=for-the-badge&logoColor=white)
-
-![Laravel](https://img.shields.io/badge/Laravel-v10-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
-
-![Bootstrap](https://img.shields.io/badge/Bootstrap5-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
-
-![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
-
-![Javascript](https://shields.io/badge/JavaScript-F7DF1E?logo=JavaScript&logoColor=000&style=flat-square)
-
-![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)
-
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
-
-![Httpd](https://img.shields.io/badge/-Apache-2d075e?&logo=Apache)
-
-# ディレクトリ構成について
-
-laravel-modulesを使っています。警報の種別ごとにmodule化しており、独立して実装・メンテナンスできるようにしています。
-
-laravel-modules
-https://github.com/nWidart/laravel-modules
 
 ## 環境変数（作成中）
 
@@ -97,57 +76,31 @@ AWS_BUCKET | AWS S3バケット名。 | my-laravel-bucket
 AWS_USE_PATH_STYLE_ENDPOINT | AWS S3でパス形式のエンドポイントを使用するか。 | FALSE
 VITE_APP_NAME | Vite/フロントエンドで利用するために公開されるアプリケーション名（Vite関連）。 | My Application
 
-## 開発時に参考にした記事
-
-[How to Install Bootstrap 5 in Laravel 12 with Vite](https://itstuffsolutiotions.io/how-to-install-bootstrap-5-in-laravel-12-with-vite/)
-
-[Laravel 12 Bootstrap Auth Scaffolding Tutorial Step by Step](https://itstuffsolutiotions.io/laravel-12-bootstrap-auth-scaffolding-tutorial-step-by-step/)
-
-[Laravel 12 Install and Configure Laravel Debugbar](https://itstuffsolutiotions.io/?s=Laravel+12+Install+and+Configure+Laravel+Debugbar)
-
-[Laravel 12 Summernote Image Upload CRUD Example](https://itstuffsolutiotions.io/laravel-12-summernote-image-upload-crud-example/)
-
-[Laravel 12 How to Install SweetAlert2 With Vite](https://itstuffsolutiotions.io/laravel-12-how-to-install-sweetalert2-with-vite/)
-
-
-
 ## Setup
 
 composer install
 
 npm install
 
-npm rund dev
+npm run dev
 
 rpm run build
 
-## Moduleの作り方
+## 楽しみ方
 
-php artisan module:make WeatherVpww54
+1. VSCODEのエクスプローラーで tests/Unit/UXX_自分の名前 のフォルダを開く
+2. U100SuccessTest.phpを開く
+3. Ctrl-k + f を押して、テストを実行する。
+4. U110DdTest.phpを開く
+5. Ctrl-k + f を押して、テストを実行する。
+6. 以下繰り返し
 
-## 配信までのデータの流れ
+※ テストに失敗したところは、QUIZタグの中の expected の値を書き換えて、テストに通るようにする
+※ わからなくなったら、tests/Unit/U01_Answer の同じフォルダの中のファイルをみる。（QUIZタグの中に答えが書いてある）
 
-Handlerがデータを取得
-
-AlertMessage に記録する
-
-警報マスタは必須
-
-AlertMessageEventを発行
-
-AlertMessageListenerがキャッチ
-
-Subscriptionテーブルから、そのアラートの受信者Clientを取得する
-
-# 初期データ登録
-
-clients 受信者
-subscriptions 購読
-cities 市区町村
+7. tests/Unit/UXX_自分の名前 の中身が一通りできたら、 tests/Feature/FXX_自分の名前 の下に移動する。
+8. 同様に繰り返す
 
 
-# DBのダンプ・リストア方法
-
-mysqldump -u USER_NAME -p -h HOST_NAME --single-transaction --extended-insert alert_300_142034_hiratsuka fire_areas fire_notices  > alert_300_142034_hiratsuka.230613.dmp
 
 
