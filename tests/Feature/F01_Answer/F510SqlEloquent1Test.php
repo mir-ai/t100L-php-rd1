@@ -8,7 +8,7 @@ use Tests\TestCase;
 use App\Models\Animal;
 use App\Models\Owner;
 
-class F510SqlEloquent extends TestCase
+class F510SqlEloquent1Test extends TestCase
 {
     // insert
     public function test_510_010_sql_insert_1(): void

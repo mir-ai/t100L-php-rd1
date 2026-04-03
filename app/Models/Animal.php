@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 //use Illuminate\Database\Eloquent\Relations\HasOne;
 //use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 //use Illuminate\Database\Eloquent\Casts\Attribute;
-use App\Traits\PopulationObservable;
 use \DateTimeInterface;
 
 /**

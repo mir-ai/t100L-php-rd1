@@ -6,35 +6,19 @@ namespace Tests\Feature;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
-class F500SqlRaw extends TestCase
+class F500SqlRaw2Test extends TestCase
 {
-    /**
-     * SQL の練習
-     * 
-     * ！！！重要！！！
-     * 
-     * 最初に一度、ターミナルで
-     * php artisan migrate
-     * を実行すること
-     * 
-     *    INFO  Running migrations.
-     *    2026_02_15_201728_create_animals_tables ....................... 86.81ms DONE
-     *    2026_02_15_201738_create_owners_tables ........................ 87.13ms DONE
-     * 
-     * と表示されたら成功。(このユニットテストの実行に必要なテーブルがmysql上に作成される)
-     * 
-     */
-
     // insert
     public function test_500_010_sql_insert_1(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
 
-        // やぎを追加する ← ★★★注目
+        $animals = ''; // TODO: animals テーブルに id = 1, name = 'やぎ' を登録する
+        // QUIZ
         DB::insert('insert into animals (id, name) values (?, ?)', [1, 'やぎ']);
+        // /QUIZ
 
-        // nameをid順で取得する
         $animals = DB::select('
            select name
              from animals
@@ -46,11 +30,9 @@ class F500SqlRaw extends TestCase
             $names[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'やぎ'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $names);
     }
@@ -61,17 +43,18 @@ class F500SqlRaw extends TestCase
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
 
-        // やぎとうさぎとひつじを登録する　 ← ★★★注目
         DB::insert('insert into animals (id, name) values (?, ?)', [1, 'やぎ']);
         DB::insert('insert into animals (id, name) values (?, ?)', [2, 'うさぎ']);
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
-        // nameをid順で取得する
+        $animals = ''; // TODO: animals テーブルから name を id 順に取得する
+        // QUIZ
         $animals = DB::select('
           select name
             from animals
            order by id
         ');
+        // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $names = [];
@@ -79,13 +62,11 @@ class F500SqlRaw extends TestCase
             $names[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'やぎ',
             'うさぎ',
             'ひつじ'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $names);
     }
@@ -101,12 +82,14 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [2, 'うさぎ']);
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
-        // nameをidの逆順で取得する　(order by id desc ← ★★★注目)
+        $animals = ''; // TODO: animals テーブルから nameカラムを id の 逆順で取得する
+        // QUIZ
         $animals = DB::select('
            select name
              from animals
             order by id desc
         ');
+        // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $names = [];
@@ -114,13 +97,11 @@ class F500SqlRaw extends TestCase
             $names[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'ひつじ',
             'うさぎ',
             'やぎ'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $names);
     }
@@ -136,10 +117,12 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [2, 'うさぎ']);
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
-        // 動物テーブルのデータをすべて削除する ← ★★★注目
+        $animals = ''; // TODO: animals テーブルの全件を削除する
+        // QUIZ
         DB::delete('
           delete from animals
         ');
+        // /QUIZ
 
         // nameを取得する
         $animals = DB::select('
@@ -154,9 +137,7 @@ class F500SqlRaw extends TestCase
             $names[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [];
-        // /QUIZ
 
         $this->assertSame($expected, $names);
     }
@@ -172,12 +153,15 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [2, 'うさぎ']);
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
-        // nameをid順で取得する (★idとnameを取得していることに注目)
+        $animals = ''; // TODO: animals から id と name カラムを id順に取得する
+        // QUIZ
         $animals = DB::select('
            select id, name
              from animals
             order by id
         ');
+        // /QUIZ
+
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -185,13 +169,11 @@ class F500SqlRaw extends TestCase
             $actual[] = "{$animal->id},{$animal->name}";
         }
 
-        // QUIZ
         $expected = [
             '1,やぎ',
             '2,うさぎ',
             '3,ひつじ'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -207,13 +189,15 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [2, 'うさぎ']);
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
-        // nameをid順で取得する (★where id > 1に注目)
+        $animals = ''; // TODO: animals から id が 1より大きいレコードの name カラムを id順に取得する: 
+        // QUIZ
         $animals = DB::select('
           select name
             from animals
            where id > 1
            order by id
         ');
+        // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -221,12 +205,10 @@ class F500SqlRaw extends TestCase
             $actual[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'うさぎ',
             'ひつじ'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -243,12 +225,16 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
         // nameをid順で取得する (★where id > 1に注目)
+        $animals = ''; // TODO: animals から name が 'やぎ' に等しいレコードの name カラムを id順に取得する: 
+        // QUIZ
         $animals = DB::select("
           select name
             from animals
            where name = 'やぎ'
            order by id
         ");
+        // /QUIZ
+
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -256,11 +242,9 @@ class F500SqlRaw extends TestCase
             $actual[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'やぎ'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -276,13 +260,16 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [2, 'うさぎ']);
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
-        // nameをid順で取得する (★where id > 1に注目)
+        $animals = ''; // TODO: animals から id が 1より大きく、かつ、id が 3より小さいレコードの name カラムを取得する。
+        // QUIZ
         $animals = DB::select("
           select name
             from animals
            where id > 1
              and id < 3
         ");
+        // /QUIZ
+
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -290,11 +277,9 @@ class F500SqlRaw extends TestCase
             $actual[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'うさぎ'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -310,13 +295,15 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [2, 'うさぎ']);
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
-        // nameをid順で取得する (★where id > 1に注目)
+        $animals = ''; // TODO: animals から id が 1と等しい、 または name が ひつじと等しい レコードの name カラムを id順に取得する: : 
+        // QUIZ
         $animals = DB::select("
            select name
              from animals
             where id = 1 or name = 'ひつじ'
             order by id
         ");
+        // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -324,12 +311,10 @@ class F500SqlRaw extends TestCase
             $actual[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'やぎ',
             'ひつじ'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -346,10 +331,13 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name, type) values (?, ?, ?)', [3, 'とり', null]);
 
         // nameをid順で取得する (★where type is null に注目)
+        $animals = ''; // TODO: animals から type が null と等しいレコードの name カラムを取得する
+        // QUIZ
         $animals = DB::select("
            select name
              from animals
             where type is null");
+        // /QUIZ        
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -357,11 +345,9 @@ class F500SqlRaw extends TestCase
             $actual[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'とり'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -378,12 +364,15 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name, type) values (?, ?, ?)', [3, 'ひつじ', null]);
 
         // nameをid順で取得する (★where type is not null に注目)
+        $animals = ''; // TODO: animals から type が null と等しくないレコードの name カラムを id の逆順で取得する
+        // QUIZ
         $animals = DB::select("
           select name
             from animals
            where type is not null
            order by id
         ");
+        // /QUIZ        
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -391,12 +380,10 @@ class F500SqlRaw extends TestCase
             $actual[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'やぎ',
             'うさぎ'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -414,13 +401,15 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [4, 'ひつじ']);
         DB::insert('insert into animals (id, name) values (?, ?)', [5, 'うさぎ']);
 
-        // nameをid順で取得する (★where type is not null に注目)
+        $animals = ''; // TODO: animals から name が や で始まるレコードの name カラムを id の昇順で取得する
+        // QUIZ
         $animals = DB::select("
            select name
              from animals
             where name like 'や%'
             order by id
         ");
+        // /QUIZ        
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -428,13 +417,11 @@ class F500SqlRaw extends TestCase
             $actual[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'やぎ',
             'やっくる',
             'やんばるくいな'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -452,12 +439,15 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [4, 'うさぎ']);
 
         // nameをid順で取得する (★where type is not null に注目)
+        $animals = ''; // TODO: animals から name が に で終わりレコードの name カラムを id の昇順で取得する
+        // QUIZ
         $animals = DB::select("
           select name
             from animals
            where name like '%に'
            order by id
         ");
+        // /QUIZ        
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -465,13 +455,11 @@ class F500SqlRaw extends TestCase
             $actual[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'かに',
             'わに',
             'うに'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -490,12 +478,15 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [5, 'ひつじ']);
 
         // nameをid順で取得する (★where type is not null に注目)
+        $animals = ''; // TODO: animals から name 中に さ を含むレコードの name カラムを id の昇順で取得する
+        // QUIZ
         $animals = DB::select("
           select name
             from animals
            where name like '%さ%'
            order by id
         ");
+        // /QUIZ        
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -503,14 +494,12 @@ class F500SqlRaw extends TestCase
             $actual[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'うさぎ',
             'かささぎ',
             'さる',
             'あさ'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -529,12 +518,15 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [5, 'すずめ']);
 
         // nameをid順で取得する (★where type is not null に注目)
+        $animals = ''; // TODO: animals id の昇順でレコードを２件だけ取得する
+        // QUIZ
         $animals = DB::select("
           select name
             from animals
            order by id
            limit 2
         ");
+        // /QUIZ        
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -542,12 +534,10 @@ class F500SqlRaw extends TestCase
             $actual[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'やぎ',
             'うさぎ'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -566,6 +556,8 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [5, 'すずめ']);
 
         // nameをid順で取得する (★where type is not null に注目)
+        $animals = ''; // TODO: animals id の昇順で、先頭から２件とばして、レコードを２件だけ取得する
+        // QUIZ
         $animals = DB::select("
           select name
             from animals
@@ -573,6 +565,7 @@ class F500SqlRaw extends TestCase
            limit 2
            offset 2
         ");
+        // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -580,12 +573,10 @@ class F500SqlRaw extends TestCase
             $actual[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'ひつじ',
             'はと'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -602,15 +593,16 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
         // nameをid順で取得する (★where id > 1に注目)
+        $count = ''; // TODO: animals の件数を取得する
+        // QUIZ
         $count = DB::scalar("
           select count(*)
             from animals
         ");
+        // /QUIZ        
 
         // 件数
-        // QUIZ
         $expected = 3;
-        // /QUIZ
 
         $this->assertSame($expected, $count);
     }
@@ -627,15 +619,16 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name, weight) values (?, ?, ?)', [3, 'ひつじ', 1]);
 
         // ★★★ sum に注目
+        $sum = ''; // TODO: animals 全レコードの weight カラムの合計を取得する
+        // QUIZ
         $sum = DB::scalar("
           select sum(weight)
             from animals
         ");
+        // /QUIZ        
 
         // sum(weight)
-        // QUIZ
         $expected = 6.0;
-        // /QUIZ
 
         $this->assertSame($expected, $sum);
     }
@@ -651,17 +644,17 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name, speed) values (?, ?, ?)', [2, 'うさぎ', 15]);
         DB::insert('insert into animals (id, name, speed) values (?, ?, ?)', [3, 'ひつじ', 5]);
 
-        // ★★★ average に注目
+        $speed = ''; // TODO: animals 全レコードの speed カラムの平均を取得する
+        // QUIZ
         $speed = DB::scalar("
           select avg(speed)
             from animals
         ");
+        // /QUIZ        
         $speed = intval($speed);
 
         // avg(speed)
-        // QUIZ
         $expected = 10;
-        // /QUIZ
 
         $this->assertSame($expected, $speed);
     }
@@ -678,15 +671,16 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name, speed) values (?, ?, ?)', [3, 'ひつじ', 5]);
 
         // ★★★ max に注目
+        $speed = ''; // TODO: animals 全レコードの speed カラムの最大値を取得する
+        // QUIZ
         $speed = DB::scalar("
           select max(speed)
             from animals
         ");
+        // /QUIZ        
 
         // max(speed)
-        // QUIZ
         $expected = 15;
-        // /QUIZ
 
         $this->assertSame($expected, $speed);
     }
@@ -702,16 +696,16 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name, speed) values (?, ?, ?)', [2, 'うさぎ', 15]);
         DB::insert('insert into animals (id, name, speed) values (?, ?, ?)', [3, 'ひつじ', 5]);
 
-        // ★★★ min に注目
+        $speed = ''; // TODO: animals 全レコードの speed カラムの最小値を取得する
+        // QUIZ
         $speed = DB::scalar("
           select min(speed)
             from animals
         ");
+        // /QUIZ        
 
         // min(speed)
-        // QUIZ
         $expected = 5;
-        // /QUIZ
 
         $this->assertSame($expected, $speed);
     }
@@ -728,13 +722,15 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, type, name) values (?, ?, ?)', [3, '四足', 'ひつじ']);
         DB::insert('insert into animals (id, type, name) values (?, ?, ?)', [4, '二足', 'はと']);
 
-        // ★★★ group by type に注目
+        $animals = ''; // TODO: animals レコードの タイプ別に 件数を取得する
+        // QUIZ
         $animals = DB::select("
            select type, count(*) as cnt
              from animals
             group by type
             order by type
         ");
+        // /QUIZ        
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -743,12 +739,10 @@ class F500SqlRaw extends TestCase
         }
 
         // 
-        // QUIZ
         $expected = [
             '二足x1種類',
             '四足x3種類',
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -765,13 +759,16 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, type, name, weight) values (?, ?, ?, ?)', [3, '四足', 'ひつじ', 2]);
         DB::insert('insert into animals (id, type, name, weight) values (?, ?, ?, ?)', [4, '二足', 'はと',  1]);
 
-        // ★★★ group by type に注目
+        $animals = ''; // TODO: animals レコードの タイプ別の 重さの合計値を取得する
+
+        // QUIZ
         $animals = DB::select("
           select type, sum(weight) as weight_sum
             from animals
            group by type
            order by type
         ");
+        // /QUIZ        
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -779,12 +776,10 @@ class F500SqlRaw extends TestCase
             $actual[] = "{$animal->type}x{$animal->weight_sum}kg";
         }
 
-        // QUIZ
         $expected = [
             '二足x1kg',
             '四足x9kg',
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -801,12 +796,14 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, type, name) values (?, ?, ?)', [3, '四足', 'ひつじ']);
         DB::insert('insert into animals (id, type, name) values (?, ?, ?)', [4, '二足', 'はと']);
 
-        // ★★★ group by type に注目
+        $animals = ''; // TODO: animals レコードの タイプを一位にして返す
+        // QUIZ
         $animals = DB::select("
            select distinct type
              from animals
             order by type
         ");
+        // /QUIZ        
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -814,12 +811,10 @@ class F500SqlRaw extends TestCase
             $actual[] = $animal->type;
         }
 
-        // QUIZ
         $expected = [
             '二足',
             '四足',
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -834,10 +829,16 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [2, 'うさぎ']);
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
-        // 値を更新する
+        // TODO: 値を更新する
+        // id = 1  name = 'やぎぴょん'
+        // id = 2  name = 'うさぎぴょん'
+        // id = 3  name = 'ひつじぴょん'
+
+        // QUIZ
         DB::update('update animals set name = ? where id = ?', ['やぎぴょん', 1]);
         DB::update('update animals set name = ? where id = ?', ['うさぎぴょん', 2]);
         DB::update('update animals set name = ? where id = ?', ['ひつじぴょん', 3]);
+        // /QUIZ        
 
         // nameをid順で取得する
         $animals = DB::select("
@@ -852,13 +853,11 @@ class F500SqlRaw extends TestCase
             $actual[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'やぎぴょん',
             'うさぎぴょん',
             'ひつじぴょん'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -873,8 +872,11 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name, type) values (?, ?, ?)', [2, 'うさぎ', '四足']);
         DB::insert('insert into animals (id, name, type) values (?, ?, ?)', [3, 'ひつじ', '四足']);
 
-        // 値を更新する(whereをつけないことに注目)
+
+        $animals = ''; // TODO: 全てのレコードの type を 哺乳類 にする
+        // QUIZ
         DB::update("update animals set type = '哺乳類'");
+        // /QUIZ        
 
         // nameをid順で取得する
         $animals = DB::select("
@@ -889,13 +891,11 @@ class F500SqlRaw extends TestCase
             $actual[] = "{$animal->name}は{$animal->type}です";
         }
 
-        // QUIZ
         $expected = [
             'やぎは哺乳類です',
             'うさぎは哺乳類です',
             'ひつじは哺乳類です'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -911,11 +911,14 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name, type) values (?, ?, ?)', [3, 'ひつじ', '四足']);
 
         // 値を更新する(whereをつけたことに注目)
+        $animals = ''; // TODO: animals テーブルの id が 1 より大きいレコードの type を 哺乳類 に更新する
+        // QUIZ
         DB::update("
           update animals
              set type = '哺乳類'
            where id > 1
         ");
+        // /QUIZ        
 
         // nameをid順で取得する
         $animals = DB::select("
@@ -930,13 +933,11 @@ class F500SqlRaw extends TestCase
             $actual[] = "{$animal->name}は{$animal->type}です";
         }
 
-        // QUIZ
         $expected = [
             'やぎは四足です',
             'うさぎは哺乳類です',
             'ひつじは哺乳類です'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -952,11 +953,14 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name, type) values (?, ?, ?)', [3, 'ひつじ', '四足']);
 
         // 値を更新する
+        $animals = ''; // TODO: animals テーブルの id が 1 または 3 のレコードの type を 哺乳類 に更新する
+        // QUIZ
         DB::update("
           update animals
              set type = '哺乳類'
            where id in (1, 3)
         ");
+        // /QUIZ        
 
         // nameをid順で取得する
         $animals = DB::select("
@@ -971,13 +975,11 @@ class F500SqlRaw extends TestCase
             $actual[] = "{$animal->name}は{$animal->type}です";
         }
 
-        // QUIZ
         $expected = [
             'やぎは哺乳類です',
             'うさぎは四足です',
             'ひつじは哺乳類です'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -1000,6 +1002,8 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name, owner_id) values (?, ?, ?)', [3, 'ひつじ', 2]);
         DB::insert('insert into animals (id, name, owner_id) values (?, ?, ?)', [4, 'とら', null]);
 
+        $animals = ''; // TODO: animals.name と owners.name を返す。(owners.name がある animals のみが表示される )
+        // QUIZ
         $animals = DB::select("
             select animals.name as animals_name,
                    owners.name as owners_name 
@@ -1007,6 +1011,7 @@ class F500SqlRaw extends TestCase
              inner join owners on animals.owner_id = owners.id
              order by animals.id
         ");
+        // /QUIZ        
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -1014,18 +1019,16 @@ class F500SqlRaw extends TestCase
             $actual[] = "{$animal->animals_name}の飼い主は{$animal->owners_name}さんです";
         }
 
-        // QUIZ
         $expected = [
             'やぎの飼い主はたろうさんです',
             'うさぎの飼い主ははなこさんです',
             'ひつじの飼い主ははなこさんです',
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
 
-    public function test_500_170_select_outer_join(): void
+    public function test_500_175_select_outer_join(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -1043,6 +1046,8 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name, owner_id) values (?, ?, ?)', [3, 'ひつじ', 2]);
         DB::insert('insert into animals (id, name, owner_id) values (?, ?, ?)', [4, 'とら', null]);
 
+        $animals = ''; // TODO: animals.name と owners.name を返す。(owners.name の有無にかかわらず すべての animals が表示される。)
+        // QUIZ
         $animals = DB::select("
             select animals.name as animals_name,
                    owners.name as owners_name
@@ -1050,6 +1055,7 @@ class F500SqlRaw extends TestCase
               left join owners on animals.owner_id = owners.id
              order by animals.id
         ");
+        // /QUIZ        
 
         // 取得結果をforeachで回して、nameを配列に追加する
         $actual = [];
@@ -1057,14 +1063,12 @@ class F500SqlRaw extends TestCase
             $actual[] = "{$animal->animals_name}の飼い主は{$animal->owners_name}さんです";
         }
 
-        // QUIZ
         $expected = [
             'やぎの飼い主はたろうさんです',
             'うさぎの飼い主ははなこさんです',
             'ひつじの飼い主ははなこさんです',
             'とらの飼い主はさんです',
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }
@@ -1080,15 +1084,22 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
         // トランザクション開始
+        $animals = ''; // TODO: トランザクションを開始する
+        // QUIZ
         DB::beginTransaction();
+        // /QUIZ        
 
         // 値を更新する
         DB::update('update animals set name = ? where id = ?', ['やぎぴょん', 1]);
         DB::update('update animals set name = ? where id = ?', ['うさぎぴょん', 2]);
 
+        $animals = ''; // TODO: トランザクションをロールバックする
+        // QUIZ
         DB::rollBack();
+        // /QUIZ        
 
         DB::update('update animals set name = ? where id = ?', ['ひつじぴょん', 3]);
+
 
         // nameをid順で取得する
         $animals = DB::select("
@@ -1103,13 +1114,11 @@ class F500SqlRaw extends TestCase
             $actual[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'やぎ',
             'うさぎ',
             'ひつじぴょん'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }    
@@ -1125,14 +1134,20 @@ class F500SqlRaw extends TestCase
         DB::insert('insert into animals (id, name) values (?, ?)', [3, 'ひつじ']);
 
         // トランザクション開始
+        $animals = ''; // TODO: トランザクションを開始する
+        // QUIZ
         DB::beginTransaction();
+        // /QUIZ        
 
         // 値を更新する
         DB::update('update animals set name = ? where id = ?', ['やぎぴょん', 1]);
         DB::update('update animals set name = ? where id = ?', ['うさぎぴょん', 2]);
         DB::update('update animals set name = ? where id = ?', ['ひつじぴょん', 3]);
 
+        $animals = ''; // TODO: トランザクションをコミットする
+        // QUIZ
         DB::commit();
+        // /QUIZ
 
         // nameをid順で取得する
         $animals = DB::select("
@@ -1146,13 +1161,11 @@ class F500SqlRaw extends TestCase
             $actual[] = $animal->name;
         }
 
-        // QUIZ
         $expected = [
             'やぎぴょん',
             'うさぎぴょん',
             'ひつじぴょん'
         ];
-        // /QUIZ
 
         $this->assertSame($expected, $actual);
     }        

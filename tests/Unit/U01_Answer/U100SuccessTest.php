@@ -21,8 +21,6 @@ class U100SuccessTest extends TestCase
     public function test_100_020_that_false_is_false(): void
     {
         $this->assertFalse(false);
-    }
-
-    
+    }    
 }
 

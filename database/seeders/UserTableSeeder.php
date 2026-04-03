@@ -23,5 +23,23 @@ class UserTableSeeder extends Seeder
             'updated_at' => now(), 
         ]);
 
+        DB::table('users')->updateOrInsert([
+            'id' => 2,
+        ],[
+            'email' => 'k-kobayashi@mir-ai.co.jp',
+            'name' => 'ミライエ小林',
+            'password' => bcrypt('04030403'), 
+            'updated_at' => now(), 
+        ]);
+
+        DB::table('users')->updateOrInsert([
+            'id' => 3,
+        ],[
+            'email' => 'y-murakami@mir-ai.co.jp',
+            'name' => 'ミライエ村上',
+            'password' => bcrypt('04030403'), 
+            'updated_at' => now(), 
+        ]);
+
     }
 }
