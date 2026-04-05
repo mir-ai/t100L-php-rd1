@@ -101,6 +101,7 @@ rpm run build
 7. tests/Unit/UXX_自分の名前 の中身が一通りできたら、 tests/Feature/FXX_自分の名前 の下に移動する。
 8. 同様に繰り返す
 
+have fun
 
 
 
