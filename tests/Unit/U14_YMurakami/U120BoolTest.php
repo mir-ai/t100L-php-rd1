@@ -2,6 +2,8 @@
 
 namespace Tests\Unit\U14_YMurakami;
 
+// test
+
 use PHPUnit\Framework\TestCase;
 
 class U120BoolTest extends TestCase
