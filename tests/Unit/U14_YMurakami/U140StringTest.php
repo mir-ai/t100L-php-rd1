@@ -13,7 +13,7 @@ class U140StringTest extends TestCase
         $actual = 'abc';
 
         // QUIZ
-		$expected = null;
+		$expected = 'abc';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -24,7 +24,7 @@ class U140StringTest extends TestCase
         $actual = "abc";
 
         // QUIZ
-		$expected = null;
+		$expected = "abc";
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -36,7 +36,7 @@ class U140StringTest extends TestCase
         $actual = 'abc{$n}';
 
         // QUIZ
-		$expected = null;
+		$expected = 'abc{$n}';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -48,7 +48,7 @@ class U140StringTest extends TestCase
         $actual = "abc{$n}";
 
         // QUIZ
-		$expected = null;
+		$expected = 'abc1';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -60,7 +60,7 @@ class U140StringTest extends TestCase
         $actual = "abc{$s}";
 
         // QUIZ
-		$expected = null;
+		$expected = 'abcdef';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -71,7 +71,7 @@ class U140StringTest extends TestCase
         $actual = 'a' . 'b' . 'c';
 
         // QUIZ
-		$expected = null;
+		$expected = 'abc';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -82,7 +82,7 @@ class U140StringTest extends TestCase
         $actual = 'a' . 'b' . 'c' . 1 . 2 . 3;
 
         // QUIZ
-		$expected = null;
+		$expected = 'abc123';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -97,7 +97,7 @@ class U140StringTest extends TestCase
 		$expected = null;
         // /QUIZ
 
-        $expected = '12';
+        $expected = '1';
 
         $this->assertSame($expected, $actual);
     }
@@ -107,7 +107,7 @@ class U140StringTest extends TestCase
         $actual = '\n';
 
         // QUIZ
-		$expected = null;
+		$expected = "\\n";
         // /QUIZ
 
         echo (__FUNCTION__ . ": actual は '{$actual}' です。\n");
@@ -120,7 +120,7 @@ class U140StringTest extends TestCase
         $actual = "\n";
 
         // QUIZ
-		$expected = null;
+		$expected = "\n";
         // /QUIZ
 
         echo (__FUNCTION__ . ": actual は '{$actual}' です。\n");
@@ -134,7 +134,7 @@ class U140StringTest extends TestCase
         $actual = '\t';
 
         // QUIZ
-		$expected = null;
+		$expected = '\t';
         // /QUIZ
 
         echo (__FUNCTION__ . ": actual は '{$actual}' です。\n");
@@ -148,7 +148,7 @@ class U140StringTest extends TestCase
         $actual = "\t";
 
         // QUIZ
-		$expected = null;
+		$expected = "\t";
         // /QUIZ
 
         echo (__FUNCTION__ . ": actual は '{$actual}' です。\n");
@@ -161,7 +161,7 @@ class U140StringTest extends TestCase
         $actual = '"';
 
         // QUIZ
-		$expected = null;
+		$expected = "\"";
         // /QUIZ
 
         echo (__FUNCTION__ . ": actual は '{$actual}' です。\n");
@@ -174,7 +174,7 @@ class U140StringTest extends TestCase
         $actual = "'";
 
         // QUIZ
-		$expected = null;
+		$expected = '\'';
         // /QUIZ
 
         echo (__FUNCTION__ . ": actual は '{$actual}' です。\n");
@@ -187,7 +187,7 @@ class U140StringTest extends TestCase
         $actual = "\\";
 
         // QUIZ
-		$expected = null;
+		$expected = '\\';
         // /QUIZ
 
         echo (__FUNCTION__ . ": actual は '{$actual}' です。\n");
@@ -204,9 +204,12 @@ class U140StringTest extends TestCase
  *     *
 *********
 END;
-
         // QUIZ
-		$expected = null;
+		$expected = "    *
+   * *
+  *   *
+ *     *
+*********";
         // /QUIZ
 
         $this->assertSame($expected, $actual);
