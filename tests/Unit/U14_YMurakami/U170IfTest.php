@@ -26,7 +26,7 @@ class U170IfTest extends TestCase
         }
 
         // QUIZ
-		$expected = null;
+		$expected = ['a','b'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -44,7 +44,7 @@ class U170IfTest extends TestCase
         }
 
         // QUIZ
-		$expected = null;
+		$expected = ['a'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -62,7 +62,7 @@ class U170IfTest extends TestCase
         }
 
         // QUIZ
-		$expected = null;
+		$expected = ['a','b'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -80,7 +80,7 @@ class U170IfTest extends TestCase
         }
 
         // QUIZ
-		$expected = null;
+		$expected = ['a','c'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -100,7 +100,7 @@ class U170IfTest extends TestCase
         }
 
         // QUIZ
-		$expected = null;
+		$expected = ['a','c'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -121,7 +121,7 @@ class U170IfTest extends TestCase
         };
 
         // QUIZ
-		$expected = null;
+		$expected = ['a','b'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -140,7 +140,7 @@ class U170IfTest extends TestCase
         };
 
         // QUIZ
-		$expected = null;
+		$expected = ['a','d'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -159,7 +159,7 @@ class U170IfTest extends TestCase
         };
 
         // QUIZ
-		$expected = null;
+		$expected = ['a','e'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -180,7 +180,7 @@ class U170IfTest extends TestCase
         };
 
         // QUIZ
-		$expected = null;
+		$expected = ['a','c'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
