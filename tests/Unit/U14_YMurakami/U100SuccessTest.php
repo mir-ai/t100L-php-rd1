@@ -11,7 +11,7 @@ class U100SuccessTest extends TestCase
     // 下のウィンドウでテストが実行されることを確認して下さい。
     //
     // OK (1 test, 1 assertion)
-    //
+    // 
     // と表示されればOKです。
     public function test_100_010_that_true_is_true(): void
     {
