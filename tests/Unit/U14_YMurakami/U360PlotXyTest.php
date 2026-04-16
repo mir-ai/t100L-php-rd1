@@ -150,7 +150,7 @@ class U360PlotXyTest extends TestCase
     }
 
     // ヒント 要素分解4
-    // 座標データに従って、キャンバス（配列）に文字を描く
+    // 配列データを文字列として結合する
     public function test_360_040_draw_2d_array(): void
     {
         $v = [
@@ -203,6 +203,7 @@ class U360PlotXyTest extends TestCase
             $canvas[$y][$x] = $char;
         }
 
+        // 配列データを文字列として結合する
         foreach ($canvas as $line) {
             $actual[] = implode('', $line);
             echo implode('', $line) . "\n";

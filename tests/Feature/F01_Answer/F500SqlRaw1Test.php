@@ -6,6 +6,9 @@ namespace Tests\Feature;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
+// SQLの基礎を総まとめ
+// https://qiita.com/n_oshiumi/items/9424ca773b6c0a809e94
+
 class F500SqlRaw1Test extends TestCase
 {
     /**
@@ -14,7 +17,7 @@ class F500SqlRaw1Test extends TestCase
      * ！！！重要！！！
      * 
      * 最初に一度、ターミナルで
-     * php artisan migrate
+     * php artisan migrate --env=testing
      * を実行すること
      * 
      *    INFO  Running migrations.
@@ -1155,5 +1158,38 @@ class F500SqlRaw1Test extends TestCase
         // /QUIZ
 
         $this->assertSame($expected, $actual);
-    }        
+    }   
+    
+    // SQLで日付を整形して表示する
+    // 
+    // https://www.javadrive.jp/mysql/function/index49.html
+    public function test_500_200_date_format(): void
+    {
+        // 動物テーブルのデータをすべて削除する
+        DB::delete('delete from animals');
+
+        // 値を登録する (登録日を 2025年12月31日23時59分 にした)
+        DB::insert('insert into animals (id, name, created_at) values (?, ?, ?)', [1, 'やぎ', '2025-12-31 23:59:59']);
+
+        $animals = DB::select("
+          select date_format(created_at, '%Y年%m月%d日') as ymd,
+                 date_format(created_at, '%Y年%m月%d日 %H時%i分%s秒') as ymdhks
+            from animals
+        ");
+
+        $actual = [];
+        foreach ($animals as $animal) {
+            $actual['ymd'] = $animal->ymd;
+            $actual['ymdhks'] = $animal->ymdhks;
+        }
+
+        // QUIZ
+        $expected = [
+            'ymd' => '2025年12月31日',
+            'ymdhks' => '2025年12月31日 23時59分59秒',
+        ];
+        // /QUIZ
+
+        $this->assertSame($expected, $actual);        
+    }
 }

@@ -6,10 +6,10 @@ namespace Tests\Feature;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
-class F500SqlRaw2Test extends TestCase
+class F501SqlRaw2Test extends TestCase
 {
     // insert
-    public function test_500_010_sql_insert_1(): void
+    public function test_501_010_sql_insert_1(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -38,7 +38,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // insert x 3 & order by id
-    public function test_500_020_sql_insert_3(): void
+    public function test_501_020_sql_insert_3(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -72,7 +72,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // order by desc
-    public function test_500_030_sql_order_by_desc(): void
+    public function test_501_030_sql_order_by_desc(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -107,7 +107,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // delete
-    public function test_500_040_delete(): void
+    public function test_501_040_delete(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -143,7 +143,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (複数カラムを取得)
-    public function test_500_050_select_multi_columns(): void
+    public function test_501_050_select_multi_columns(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -179,7 +179,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (where)
-    public function test_500_060_select_where(): void
+    public function test_501_060_select_where(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -214,7 +214,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (where)
-    public function test_500_070_select_where_match(): void
+    public function test_501_070_select_where_match(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -250,7 +250,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (where and)
-    public function test_500_071_select_where_and(): void
+    public function test_501_071_select_where_and(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -285,7 +285,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (where or)
-    public function test_500_072_select_where_and(): void
+    public function test_501_072_select_where_and(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -320,7 +320,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (where null)
-    public function test_500_073_select_where_null(): void
+    public function test_501_073_select_where_null(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -353,7 +353,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (where not null)
-    public function test_500_074_select_where_not_null(): void
+    public function test_501_074_select_where_not_null(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -389,7 +389,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (where like)
-    public function test_500_074_select_where_like_1(): void
+    public function test_501_074_select_where_like_1(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -427,7 +427,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (where like 2)
-    public function test_500_074_select_where_like_2(): void
+    public function test_501_074_select_where_like_2(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -465,7 +465,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (where like 2)
-    public function test_500_075_select_where_like_3(): void
+    public function test_501_075_select_where_like_3(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -505,7 +505,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (where limit 2)
-    public function test_500_076_select_limit_2(): void
+    public function test_501_076_select_limit_2(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -543,7 +543,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (where offset 2)
-    public function test_500_076_select_offset_2(): void
+    public function test_501_076_select_offset_2(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -582,7 +582,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (count)
-    public function test_500_080_select_count(): void
+    public function test_501_080_select_count(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -608,7 +608,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (sum)
-    public function test_500_090_select_sum(): void
+    public function test_501_090_select_sum(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -634,7 +634,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (average)
-    public function test_500_100_select_average(): void
+    public function test_501_100_select_average(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -660,7 +660,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (average)
-    public function test_500_101_select_max(): void
+    public function test_501_101_select_max(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -686,7 +686,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // select (average)
-    public function test_500_102_select_min(): void
+    public function test_501_102_select_min(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -711,7 +711,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // group by count
-    public function test_500_110_select_group_by_count(): void
+    public function test_501_110_select_group_by_count(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -748,7 +748,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // group by weight
-    public function test_500_120_select_group_by_weight(): void
+    public function test_501_120_select_group_by_weight(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -785,7 +785,7 @@ class F500SqlRaw2Test extends TestCase
     }
 
     // group by count
-    public function test_500_125_select_distinct(): void
+    public function test_501_125_select_distinct(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -819,7 +819,7 @@ class F500SqlRaw2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_500_130_update_names(): void
+    public function test_501_130_update_names(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -862,7 +862,7 @@ class F500SqlRaw2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_500_140_update_types_all(): void
+    public function test_501_140_update_types_all(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -900,7 +900,7 @@ class F500SqlRaw2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_500_150_update_types_where_gt(): void
+    public function test_501_150_update_types_where_gt(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -942,7 +942,7 @@ class F500SqlRaw2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_500_160_update_types_where_in(): void
+    public function test_501_160_update_types_where_in(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -984,7 +984,7 @@ class F500SqlRaw2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_500_170_select_inner_join(): void
+    public function test_501_170_select_inner_join(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -1028,7 +1028,7 @@ class F500SqlRaw2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_500_175_select_outer_join(): void
+    public function test_501_175_select_outer_join(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -1073,7 +1073,7 @@ class F500SqlRaw2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_500_180_transaction_rollback(): void
+    public function test_501_180_transaction_rollback(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -1123,7 +1123,7 @@ class F500SqlRaw2Test extends TestCase
         $this->assertSame($expected, $actual);
     }    
 
-    public function test_500_190_transaction_commit(): void
+    public function test_501_190_transaction_commit(): void
     {
         // 動物テーブルのデータをすべて削除する
         DB::delete('delete from animals');
@@ -1168,5 +1168,39 @@ class F500SqlRaw2Test extends TestCase
         ];
 
         $this->assertSame($expected, $actual);
-    }        
+    }   
+    
+    // SQLで日付を整形して表示する
+    // 
+    // https://www.javadrive.jp/mysql/function/index49.html
+    public function test_501_200_date_format(): void
+    {
+        // 動物テーブルのデータをすべて削除する
+        DB::delete('delete from animals');
+
+        // 値を登録する (登録日を 2025年12月31日23時59分 にした)
+        DB::insert('insert into animals (id, name, created_at) values (?, ?, ?)', [1, 'やぎ', '2025-12-31 23:59:59']);
+
+        $animals = [];
+        // QUIZ
+        $animals = DB::select("
+          select date_format(created_at, '%Y年%m月%d日') as ymd,
+                 date_format(created_at, '%Y年%m月%d日 %H時%i分%s秒') as ymdhks
+            from animals
+        ");
+        // /QUIZ
+
+        $actual = [];
+        foreach ($animals as $animal) {
+            $actual['ymd'] = $animal->ymd;
+            $actual['ymdhks'] = $animal->ymdhks;
+        }
+
+        $expected = [
+            'ymd' => '2025年12月31日',
+            'ymdhks' => '2025年12月31日 23時59分59秒',
+        ];
+
+        $this->assertSame($expected, $actual);        
+    }    
 }

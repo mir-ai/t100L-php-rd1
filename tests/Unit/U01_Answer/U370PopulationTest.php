@@ -395,7 +395,7 @@ class U370PopulationTest extends TestCase
 
     // 上級課題3
     // 町ごとの平均年齢を算出してみよう
-    public function test_380_090_average_age_by_town(): void    
+    public function test_370_090_average_age_by_town(): void    
     {
         // QUIZ
         // /QUIZ
@@ -404,7 +404,7 @@ class U370PopulationTest extends TestCase
 
     // 上級課題4
     // 男性と女性の平均年齢差を算出してみよう
-    public function test_390_100_average_age_by_gender(): void
+    public function test_370_100_average_age_by_gender(): void
     {
         // QUIZ
         // /QUIZ
@@ -413,7 +413,7 @@ class U370PopulationTest extends TestCase
 
     // 上級課題5
     // 中央区、浜名区、天竜区の平均年齢を算出する
-    public function test_400_110_average_age_by_ward(): void
+    public function test_370_110_average_age_by_ward(): void
     {
         // QUIZ
         // /QUIZ

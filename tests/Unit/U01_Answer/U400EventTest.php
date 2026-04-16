@@ -14,7 +14,7 @@ class U400EventTest extends TestCase
 
     // 実務課題 : 浜松市のイベント情報の検索・抽出
 
-    // 浜松市で一番イベントが開催されている場所を抽出する
+    // 浜松市で一番イベントが開催されている場所を上位3件抽出する
 
     // tests/Unit/data/event.tsv (または tests/Unit/data/event_small.tsv)
     // を読み込んで、一番イベントが開催されている場所名称を上位３件を取得してみよう。
@@ -108,15 +108,6 @@ class U400EventTest extends TestCase
     }
 
     // 上級問題3
-    // 日毎の区ごとのイベントの開催件数を求める
-    public function test_400_050_event_count_by_date_and_ward()
-    {
-        // QUIZ
-        // /QUIZ
-        $this->assertTrue(true);
-    }
-
-    // 上級問題4
     // イベント名に浜松が含まれるイベント名をすべて抽出する（浜松、ハママツ、はままつ、HAMAMATSU,Hamamatsu,hamamatu）
     public function test_400_060_filter_hamamatsu_event_names()
     {
@@ -125,8 +116,9 @@ class U400EventTest extends TestCase
         $this->assertTrue(true);
     }
 
-    // 上級問題5
-    // 開始時間を0時〜23時（1時間刻み）にした場合の件数を求める。
+    // 上級問題4
+    // 開始時間が記入されているものについて、
+    // 0時〜23時（1時間刻み）にした場合の件数を求める。
     public function test_400_070_event_count_by_start_hours()
     {
         // QUIZ

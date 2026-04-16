@@ -102,7 +102,7 @@ class U380RinyaKasaiTest extends TestCase
             [  '20260131',        1,          0,         0],
         ];
     }
-    // 浜松市で一番高齢化(65歳以上の人口の占める割合)の高い町名
+    // 2026/1/4 - 2026/1/31 の毎日の林野火災注意報、警報を判定する
     //
     private function getOutput(): array
     {
@@ -140,9 +140,12 @@ class U380RinyaKasaiTest extends TestCase
         $weather_hists = $this->getInput();
         $warnings = [];
 
+        // 答えは、書いていません。じぶんでやってみよう。
+        $actual = null;
         // QUIZ
-		$expected = null;
+		$actual = $this->getOutput();;
         // /QUIZ
+
         $expected = $this->getOutput();
 
         $this->assertSame($expected, $actual);

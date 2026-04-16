@@ -8,10 +8,10 @@ use Tests\TestCase;
 use App\Models\Animal;
 use App\Models\Owner;
 
-class F510SqlEloquent2Test extends TestCase
+class F511SqlEloquent2Test extends TestCase
 {
     // insert
-    public function test_510_010_sql_insert_1(): void
+    public function test_511_010_sql_insert_1(): void
     {
         // 動物テーブルのデータをすべて削除する
         // DB::delete('delete from animals');
@@ -19,10 +19,7 @@ class F510SqlEloquent2Test extends TestCase
 
         // TODO: animals テーブルに id = 1, name = 'やぎ' のレコードを登録する
         // QUIZ
-        Animal::create([
-            'id' => 1,
-            'name' => 'やぎ',
-        ]);
+		$expected = null;
         // /QUIZ
 
         $animals = Animal::query()->get();
@@ -41,7 +38,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // insert x 3 & order by id
-    public function test_510_020_sql_insert_3(): void
+    public function test_511_020_sql_insert_3(): void
     {
         // 動物テーブルのデータをすべて削除する
         // DB::delete('delete from animals');
@@ -59,9 +56,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $animals = ''; // TODO: animals テーブルから name を id 順に取得する
         // QUIZ
-        $animals = Animal::query()
-            ->orderBy('id')
-            ->get();
+		$expected = null;
         // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
@@ -80,7 +75,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // order by desc
-    public function test_510_030_sql_order_by_desc(): void
+    public function test_511_030_sql_order_by_desc(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -94,9 +89,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $animals = ''; // TODO: animals テーブルから nameカラムを id の 逆順で取得する
         // QUIZ
-        $animals = Animal::query()
-            ->orderBy('id', 'desc')
-            ->get();
+		$expected = null;
         // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
@@ -115,7 +108,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // delete
-    public function test_510_040_delete(): void
+    public function test_511_040_delete(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -129,7 +122,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $animals = ''; // TODO: animals テーブルの全件を削除する
         // QUIZ
-        Animal::query()->delete();
+		$expected = null;
         // /QUIZ
 
         // nameを取得する
@@ -152,7 +145,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (複数カラムを取得)
-    public function test_510_050_select_multi_columns(): void
+    public function test_511_050_select_multi_columns(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -167,9 +160,7 @@ class F510SqlEloquent2Test extends TestCase
         // nameをid順で取得する (★idとnameを取得していることに注目)
         $animals = ''; // TODO: animals から id と name カラムを id順に取得する
         // QUIZ
-        $animals = Animal::query()
-            ->orderBy('id')
-            ->get();
+		$expected = null;
         // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
@@ -188,7 +179,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (where)
-    public function test_510_060_select_where(): void
+    public function test_511_060_select_where(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -201,12 +192,9 @@ class F510SqlEloquent2Test extends TestCase
         ]);
 
         // nameをid順で取得する (★where id > 1に注目)
-        $animals = ''; // TODO: animals から id が 1より大きいレコードの name カラムを id順に取得する: 
+        $animals = ''; // TODO: animals から id が 1より大きいレコードの name カラムを id順に取得する:
         // QUIZ
-        $animals = Animal::query()
-            ->where('id', '>', 1)
-            ->orderBy('id')
-            ->get();
+		$expected = null;
         // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
@@ -224,7 +212,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (where)
-    public function test_510_070_select_where_match(): void
+    public function test_511_070_select_where_match(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -237,13 +225,9 @@ class F510SqlEloquent2Test extends TestCase
         ]);
 
         // nameをid順で取得する (★where name やぎに注目)
-        $animals = ''; // TODO: animals から name が 'やぎ' に等しいレコードの name カラムを id順に取得する: 
+        $animals = ''; // TODO: animals から name が 'やぎ' に等しいレコードの name カラムを id順に取得する:
         // QUIZ
-        $animals = Animal::query()
-            ->select('name')
-            ->where('name', 'やぎ')
-            ->orderBy('id')
-            ->get();
+		$expected = null;
         // /QUIZ
 
 
@@ -261,7 +245,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (where and)
-    public function test_510_071_select_where_and(): void
+    public function test_511_071_select_where_and(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -276,11 +260,7 @@ class F510SqlEloquent2Test extends TestCase
         // nameをid順で取得する (★where id > 1に注目)
         $animals = ''; // TODO: animals から id が 1より大きく、かつ、id が 3より小さいレコードの name カラムを取得する。
         // QUIZ
-        $animals = Animal::query()
-            ->where('id', '>', 1)
-            ->where('id', '<', 3)
-            ->orderBy('id')
-            ->get();
+		$expected = null;
         // /QUIZ
 
 
@@ -298,7 +278,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (where or)
-    public function test_510_072_select_where_and(): void
+    public function test_511_072_select_where_and(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -311,14 +291,9 @@ class F510SqlEloquent2Test extends TestCase
         ]);
 
         // nameをid順で取得する (★where id > 1に注目)
-        $animals = ''; // TODO: animals から id が 1と等しい、 または name が ひつじと等しい レコードの name カラムを id順に取得する: : 
+        $animals = ''; // TODO: animals から id が 1と等しい、 または name が ひつじと等しい レコードの name カラムを id順に取得する: :
         // QUIZ
-        $animals = Animal::query()
-            ->select('name')
-            ->where('id', 1)
-            ->orWhere('name', 'ひつじ')
-            ->orderBy('id')
-            ->get();
+		$expected = null;
         // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
@@ -336,7 +311,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (where null)
-    public function test_510_073_select_where_null(): void
+    public function test_511_073_select_where_null(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -351,11 +326,7 @@ class F510SqlEloquent2Test extends TestCase
         // nameをid順で取得する (★where type is null に注目)
         $animals = ''; // TODO: animals から type が null と等しいレコードの name カラムを取得する
         // QUIZ
-        $animals = Animal::query()
-            ->select('name')
-            ->whereNull('type')
-            ->orderBy('id')
-            ->get();
+		$expected = null;
         // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
@@ -372,7 +343,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (where not null)
-    public function test_510_074_select_where_not_null(): void
+    public function test_511_074_select_where_not_null(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -387,11 +358,7 @@ class F510SqlEloquent2Test extends TestCase
         // nameをid順で取得する (★where type is not null に注目)
         $animals = ''; // TODO: animals から type が null と等しくないレコードの name カラムを id の逆順で取得する
         // QUIZ
-        $animals = Animal::query()
-            ->select('name')
-            ->whereNotNull('type')
-            ->orderBy('id')
-            ->get();
+		$expected = null;
         // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
@@ -409,7 +376,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (where like)
-    public function test_510_074_select_where_like_1(): void
+    public function test_511_074_select_where_like_1(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -426,11 +393,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $animals = ''; // TODO: animals から name が や で始まるレコードの name カラムを id の昇順で取得する
         // QUIZ
-        $animals = Animal::query()
-            ->select('name')
-            ->where('name', 'like', 'や%')
-            ->orderBy('id')
-            ->get();
+		$expected = null;
         // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
@@ -449,7 +412,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (where like 2)
-    public function test_510_074_select_where_like_2(): void
+    public function test_511_074_select_where_like_2(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -465,11 +428,7 @@ class F510SqlEloquent2Test extends TestCase
         // nameをid順で取得する (★where type is not null に注目)
         $animals = ''; // TODO: animals から name が に で終わりレコードの name カラムを id の昇順で取得する
         // QUIZ
-        $animals = Animal::query()
-            ->select('name')
-            ->where('name', 'like', '%に')
-            ->orderBy('id')
-            ->get();
+		$expected = null;
         // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
@@ -488,7 +447,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (where like 2)
-    public function test_510_075_select_where_like_3(): void
+    public function test_511_075_select_where_like_3(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -505,11 +464,7 @@ class F510SqlEloquent2Test extends TestCase
         // nameをid順で取得する (★where type is not null に注目)
         $animals = ''; // TODO: animals から name 中に さ を含むレコードの name カラムを id の昇順で取得する
         // QUIZ
-        $animals = Animal::query()
-            ->select('name')
-            ->where('name', 'like', '%さ%')
-            ->orderBy('id')
-            ->get();
+		$expected = null;
         // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
@@ -529,7 +484,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (where limit 2)
-    public function test_510_076_select_limit_2(): void
+    public function test_511_076_select_limit_2(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -545,11 +500,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $animals = ''; // TODO: animals id の昇順でレコードを２件だけ取得する
         // QUIZ
-        $animals = Animal::query()
-            ->select('name')
-            ->orderBy('id')
-            ->limit(2)
-            ->get();
+		$expected = null;
         // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
@@ -567,7 +518,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (where offset 2)
-    public function test_510_076_select_offset_2(): void
+    public function test_511_076_select_offset_2(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -583,12 +534,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $animals = ''; // TODO: animals id の昇順で、先頭から２件とばして、レコードを２件だけ取得する
         // QUIZ
-        $animals = Animal::query()
-            ->select('name')
-            ->orderBy('id')
-            ->limit(2)
-            ->offset(2)
-            ->get();
+		$expected = null;
         // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
@@ -606,7 +552,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (count)
-    public function test_510_080_select_count(): void
+    public function test_511_080_select_count(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -621,7 +567,7 @@ class F510SqlEloquent2Test extends TestCase
         // nameをid順で取得する (★where id > 1に注目)
         $count = ''; // TODO: animals の件数を取得する
         // QUIZ
-        $count = Animal::query()->count();
+		$expected = null;
         // /QUIZ
 
         // 件数
@@ -632,7 +578,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (sum)
-    public function test_510_090_select_sum(): void
+    public function test_511_090_select_sum(): void
     {
         // 動物テーブルのデータをすべて削除する
         //DB::delete('delete from animals');
@@ -648,7 +594,7 @@ class F510SqlEloquent2Test extends TestCase
         // ★★★ sum に注目
         $sum = ''; // TODO: animals 全レコードの weight カラムの合計を取得する
         // QUIZ
-        $sum = Animal::query()->sum('weight');
+		$expected = null;
         // /QUIZ
 
         // sum(weight)
@@ -658,7 +604,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (average)
-    public function test_510_100_select_average(): void
+    public function test_511_100_select_average(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -672,7 +618,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $speed = ''; // TODO: animals 全レコードの speed カラムの平均を取得する
         // QUIZ
-        $speed = Animal::query()->average('speed');
+		$expected = null;
         // /QUIZ
         $speed = intval($speed);
 
@@ -683,7 +629,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (average)
-    public function test_510_101_select_max(): void
+    public function test_511_101_select_max(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -698,7 +644,7 @@ class F510SqlEloquent2Test extends TestCase
         // ★★★ max に注目
         $speed = ''; // TODO: animals 全レコードの speed カラムの最大値を取得する
         // QUIZ
-        $speed = Animal::query()->max('speed');
+		$expected = null;
         // /QUIZ
 
 
@@ -709,7 +655,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // select (average)
-    public function test_510_102_select_min(): void
+    public function test_511_102_select_min(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -723,7 +669,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $speed = ''; // TODO: animals 全レコードの speed カラムの最小値を取得する
         // QUIZ
-        $speed = Animal::query()->min('speed');
+		$expected = null;
         // /QUIZ
 
         // min(speed)
@@ -733,7 +679,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // group by count
-    public function test_510_110_select_group_by_count(): void
+    public function test_511_110_select_group_by_count(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -749,12 +695,7 @@ class F510SqlEloquent2Test extends TestCase
         // ★★★ group by type に注目
         $animals = ''; // TODO: animals レコードの タイプ別に 件数を取得する
         // QUIZ
-        $animals = DB::select("
-           select type, count(*) as cnt
-             from animals
-            group by type
-            order by type
-        ");
+		$expected = null;
         // /QUIZ
 
         $animals = Animal::query()
@@ -769,7 +710,7 @@ class F510SqlEloquent2Test extends TestCase
             $actual[] = "{$animal->type}x{$animal->cnt}種類";
         }
 
-        // 
+        //
         $expected = [
             '二足x1種類',
             '四足x3種類',
@@ -779,7 +720,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // group by weight
-    public function test_510_120_select_group_by_weight(): void
+    public function test_511_120_select_group_by_weight(): void
     {
         // 動物テーブルのデータをすべて削除する
         //DB::delete('delete from animals');
@@ -795,11 +736,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $animals = ''; // TODO: animals レコードの タイプ別の 重さの合計値を取得する
         // QUIZ
-        $animals = Animal::query()
-            ->selectRaw('type, sum(weight) as weight_sum')
-            ->groupBy('type')
-            ->orderBy('type')
-            ->get();
+		$expected = null;
         // /QUIZ
 
 
@@ -818,7 +755,7 @@ class F510SqlEloquent2Test extends TestCase
     }
 
     // group by count
-    public function test_510_125_select_distinct(): void
+    public function test_511_125_select_distinct(): void
     {
         // 動物テーブルのデータをすべて削除する
         //DB::delete('delete from animals');
@@ -835,11 +772,7 @@ class F510SqlEloquent2Test extends TestCase
         // ★★★ distinct に注目
         $animals = ''; // TODO: animals レコードの タイプを一位にして返す
         // QUIZ
-        $animals = Animal::query()
-            ->select('type')
-            ->distinct('type')
-            ->orderBy('type')
-            ->get();
+		$expected = null;
         // /QUIZ
 
 
@@ -857,7 +790,7 @@ class F510SqlEloquent2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_510_130_update_names(): void
+    public function test_511_130_update_names(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -876,9 +809,7 @@ class F510SqlEloquent2Test extends TestCase
         // id = 3  name = 'ひつじぴょん'
 
         // QUIZ
-        $animal = Animal::where('id', 1)->update(['name' => 'やぎぴょん']);
-        $animal = Animal::where('id', 2)->update(['name' => 'うさぎぴょん']);
-        $animal = Animal::where('id', 3)->update(['name' => 'ひつじぴょん']);
+		$expected = null;
         // /QUIZ
 
         $animals = Animal::query()
@@ -901,7 +832,7 @@ class F510SqlEloquent2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_510_135_upsert(): void
+    public function test_511_135_upsert(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -927,7 +858,7 @@ class F510SqlEloquent2Test extends TestCase
         // $updates のデータそれぞれについて、 id カラムで検索し、name カラムを更新する。
 
         // QUIZ
-        $animal = Animal::upsert($updates, ['id'], ['name']);
+		$expected = null;
         // /QUIZ
 
         $animals = Animal::query()
@@ -950,7 +881,7 @@ class F510SqlEloquent2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_510_140_update_types_all(): void
+    public function test_511_140_update_types_all(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -965,7 +896,7 @@ class F510SqlEloquent2Test extends TestCase
         // 値を更新する(whereをつけないことに注目)
         $animals = ''; // TODO: 全てのレコードの type を 哺乳類 にする
         // QUIZ
-        Animal::query()->update(['type' => '哺乳類']);
+		$expected = null;
         // /QUIZ
 
         $animals = Animal::query()
@@ -991,7 +922,7 @@ class F510SqlEloquent2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_510_150_update_types_where_gt(): void
+    public function test_511_150_update_types_where_gt(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -1005,6 +936,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $animals = ''; // TODO: animals テーブルの id が 1 より大きいレコードの type を 哺乳類 に更新する
         // QUIZ
+		$expected = null;
         // /QUIZ
         Animal::query()
             ->where('id', '>', 1)
@@ -1032,7 +964,7 @@ class F510SqlEloquent2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_510_160_update_types_where_in(): void
+    public function test_511_160_update_types_where_in(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -1046,11 +978,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $animals = ''; // TODO: animals テーブルの id が 1 または 3 のレコードの type を 哺乳類 に更新する
         // QUIZ
-        $animals = Animal::query()
-            ->whereIn('id', [1, 3])
-            ->update([
-                'type' => '哺乳類'
-            ]);
+		$expected = null;
         // /QUIZ
 
         $animals = Animal::query()
@@ -1073,7 +1001,7 @@ class F510SqlEloquent2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_510_170_select_inner_join(): void
+    public function test_511_170_select_inner_join(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -1097,14 +1025,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $animals = ''; // TODO: join を使って animals.name と owners.name を取得する
         // QUIZ
-        $animals = Animal::query()
-            ->join('owners', 'animals.owner_id', 'owners.id')
-            ->select(
-                'animals.name as animals_name',
-                'owners.name as owners_name'
-            )
-            ->orderBy('animals.id')
-            ->get();
+		$expected = null;
         // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
@@ -1122,7 +1043,7 @@ class F510SqlEloquent2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_510_175_select_inner_join_with(): void
+    public function test_511_175_select_inner_join_with(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -1146,11 +1067,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $animals = ''; // TODO: with を使って Animal と owner のレコードを取得する
         // QUIZ
-        // App\Models\Animal.php の owner 関数に注目
-        $animals = Animal::query()
-            ->with('owner')
-            ->orderBy('id')
-            ->get();
+		$expected = null;
         // /QUIZ
 
 
@@ -1172,7 +1089,7 @@ class F510SqlEloquent2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_510_176_select_outer_join(): void
+    public function test_511_176_select_outer_join(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -1196,14 +1113,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $animals = ''; // TODO: left join を使って animals.name と owners.name を取得する
         // QUIZ
-        $animals = Animal::query()
-            ->leftJoin('owners', 'animals.owner_id', 'owners.id')
-            ->select(
-                'animals.name as animals_name',
-                'owners.name as owners_name'
-            )
-            ->orderBy('animals.id')
-            ->get();
+		$expected = null;
         // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
@@ -1222,7 +1132,7 @@ class F510SqlEloquent2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_510_177_select_outer_join(): void
+    public function test_511_177_select_outer_join(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -1246,10 +1156,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $animals = ''; // TODO: with を使って Animalクラスと、それに紐づく ownerの情報を取得する
         // QUIZ
-        $animals = Animal::query()
-            ->with('owner')
-            ->orderBy('id')
-            ->get();
+		$expected = null;
         // /QUIZ
 
         // 取得結果をforeachで回して、nameを配列に追加する
@@ -1268,7 +1175,7 @@ class F510SqlEloquent2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_510_200_pluck(): void
+    public function test_511_200_pluck(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -1282,10 +1189,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $actual = []; // TODO: Animalクラスから、 pluck と toArrayを使って expected と同じ配列を作る
         // QUIZ
-        $actual = Animal::query()
-            ->orderBy('id')
-            ->pluck('name')
-            ->toArray();
+		$expected = null;
         // /QUIZ
 
         $expected = [
@@ -1297,7 +1201,7 @@ class F510SqlEloquent2Test extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function test_510_210_pluck2(): void
+    public function test_511_210_pluck2(): void
     {
         // 動物テーブルのデータをすべて削除する
         Animal::query()->forceDelete();
@@ -1311,10 +1215,7 @@ class F510SqlEloquent2Test extends TestCase
 
         $actual = []; // TODO: Animalクラスから、 pluck と toArrayを使って expected と同じ配列を作る
         // QUIZ
-        $actual = Animal::query()
-            ->orderBy('id')
-            ->pluck('name', 'id')
-            ->toArray();
+		$expected = null;
         // /QUIZ
 
 

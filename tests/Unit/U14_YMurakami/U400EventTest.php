@@ -30,6 +30,7 @@ class U400EventTest extends TestCase
     }
 
     // じぶんでやってみよう
+    // 浜松市で一番イベントが開催されている場所を抽出する
     public function test_400_020_popular_places(): void
     {
         // 元データを読み込む

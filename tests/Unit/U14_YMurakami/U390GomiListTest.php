@@ -52,6 +52,8 @@ class U390GomiListTest extends TestCase
     }
 
     // じぶんでやってみよう
+    // tests/Unit/data/gomi_items_utf8.tsv (または tests/Unit/data/gomi_items_small_utf8.tsv)
+    // を読み込んで、処理手数料が1240円のごみの、「品目」と「詳細」と「大きさ・長さ」欄を結合して配列に出力してみよう。
     public function test_390_020_expensive_gomi(): void
     {
         // 元データを読み込む
@@ -62,8 +64,9 @@ class U390GomiListTest extends TestCase
             echo "{$filename} を読み込めません。";
         }
 
+        $actual = null;
         // QUIZ
-		$expected = null;
+		$actual = $this->getOutput();;
         // /QUIZ
         $expected = $this->getOutput();
 
