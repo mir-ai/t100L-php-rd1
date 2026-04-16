@@ -27,7 +27,7 @@ class U160ConditionTest extends TestCase
         $actual = (1 == 1);
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -38,7 +38,7 @@ class U160ConditionTest extends TestCase
         $actual = (1 != 1);
 
         // QUIZ
-		$expected = null;
+		$expected = false;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -49,7 +49,7 @@ class U160ConditionTest extends TestCase
         $actual = (1 == "1");
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -60,7 +60,7 @@ class U160ConditionTest extends TestCase
         $actual = (123 == "123");
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -71,7 +71,7 @@ class U160ConditionTest extends TestCase
         $actual = (1 === "1");
 
         // QUIZ
-		$expected = null;
+		$expected = false;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -82,7 +82,7 @@ class U160ConditionTest extends TestCase
         $actual = (123 === "123");
 
         // QUIZ
-		$expected = null;
+		$expected = false;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -93,7 +93,7 @@ class U160ConditionTest extends TestCase
         $actual = (1 == 1);
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -104,7 +104,7 @@ class U160ConditionTest extends TestCase
         $actual = (1 < 2);
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -115,7 +115,7 @@ class U160ConditionTest extends TestCase
         $actual = (1 <= 1);
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -126,7 +126,7 @@ class U160ConditionTest extends TestCase
         $actual = (1 <= 2);
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -137,7 +137,7 @@ class U160ConditionTest extends TestCase
         $actual = (1 != 2);
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -148,7 +148,7 @@ class U160ConditionTest extends TestCase
         $actual = (1 != 1);
 
         // QUIZ
-		$expected = null;
+		$expected = false;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -159,7 +159,7 @@ class U160ConditionTest extends TestCase
         $actual = (1 != 1);
 
         // QUIZ
-		$expected = null;
+		$expected = false;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -170,7 +170,7 @@ class U160ConditionTest extends TestCase
         $actual = (1 <> 1);
 
         // QUIZ
-		$expected = null;
+		$expected = false;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -188,7 +188,7 @@ class U160ConditionTest extends TestCase
         }
 
         // QUIZ
-		$expected = null;
+		$expected = 'empty';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -205,7 +205,7 @@ class U160ConditionTest extends TestCase
         }
 
         // QUIZ
-		$expected = null;
+		$expected = 'empty';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
