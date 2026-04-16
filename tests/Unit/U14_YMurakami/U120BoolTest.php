@@ -18,7 +18,7 @@ class U120BoolTest extends TestCase
         $actual = ! $v;
 
         // QUIZ
-		$expected = null;
+		$expected = false;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -30,7 +30,7 @@ class U120BoolTest extends TestCase
         $actual = ! $v;
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -41,7 +41,7 @@ class U120BoolTest extends TestCase
         $actual = true && true;
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -52,7 +52,7 @@ class U120BoolTest extends TestCase
         $actual = true && false;
 
         // QUIZ
-		$expected = null;
+		$expected = false;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -63,7 +63,7 @@ class U120BoolTest extends TestCase
         $actual = true || true;
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -74,7 +74,7 @@ class U120BoolTest extends TestCase
         $actual = true || false;
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -85,7 +85,7 @@ class U120BoolTest extends TestCase
         $actual = false || true;
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -96,7 +96,7 @@ class U120BoolTest extends TestCase
         $actual = false || false;
 
         // QUIZ
-		$expected = null;
+		$expected = false;
         // /QUIZ
 
         $this->assertSame($expected, $actual);

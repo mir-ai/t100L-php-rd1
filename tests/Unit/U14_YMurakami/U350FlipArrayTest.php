@@ -120,7 +120,22 @@ class U350FlipArrayTest extends TestCase
         $outputs = [];
 
         // QUIZ
-		$expected = null;
+        // 文字列の配列を、２次元配列に変換する
+        $convert = [];
+        foreach ($inputs as $input) {
+            $chars = str_split($input);
+            $convert[] = $chars;
+        }
+        // ２次元配列の、縦と横を入れ替えたものを作成する
+        foreach ($convert as $y => $items) {
+            foreach ($items as $x => $val) {
+                $exchange[$x][$y] = $val;
+            }
+        }
+        // ２次元配列を、文字列に直す
+        foreach ($exchange as $y => $items) {
+            $outputs[] = implode('', $items);
+        }
         // /QUIZ
 
         $actual = $outputs;

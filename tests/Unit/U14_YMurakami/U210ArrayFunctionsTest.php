@@ -3,6 +3,7 @@
 namespace Tests\Unit\U14_YMurakami;
 
 use PHPUnit\Framework\TestCase;
+use SebastianBergmann\Type\FalseType;
 
 // 配列 関数
 // https://www.php.net/manual/ja/ref.array.php
@@ -20,7 +21,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_merge([1, 2, 3], [4, 5, 6]);
 
         // QUIZ
-		$expected = null;
+		$expected = [1,2,3,4,5,6];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -43,7 +44,7 @@ class U210ArrayFunctionsTest extends TestCase
         );
 
         // QUIZ
-		$expected = null;
+		$expected = ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5, 'f' => 6];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -67,7 +68,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = implode(', ', ['a', 'b', 'c']);
 
         // QUIZ
-		$expected = null;
+		$expected = 'a, b, c';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -79,7 +80,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = explode(', ', 'a, b, c');
 
         // QUIZ
-		$expected = null;
+		$expected = ['a', 'b', 'c'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -91,7 +92,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = in_array('a', ['a', 'b', 'c']);
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -102,7 +103,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = in_array('d', ['a', 'b', 'c']);
 
         // QUIZ
-		$expected = null;
+		$expected = false;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -113,7 +114,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = in_array('d', ['a', 'b', 'c']);
 
         // QUIZ
-		$expected = null;
+		$expected = false;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -124,7 +125,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = in_array(1, [1, 2, 3]);
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -135,7 +136,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = in_array("1", [1, 2, 3]);
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -146,7 +147,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = in_array("1", [1, 2, 3], true); // 第三引数にtrueを指定して型を厳密に比較することもできる
 
         // QUIZ
-		$expected = null;
+		$expected = false;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -164,7 +165,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_keys($population_kvs);
 
         // QUIZ
-		$expected = null;
+		$expected = ['東京都','大阪府','愛知県'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -182,7 +183,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_values($population_kvs);
 
         // QUIZ
-		$expected = null;
+		$expected = [14047594,8837685,7542415];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -194,7 +195,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_unique([1, 2, 3, 4, 3, 2, 1]);
 
         // QUIZ
-		$expected = null;
+		$expected = [1,2,3,4];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -207,7 +208,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_values($v); // 構造が変わってしまうので、array_valuesで整理
 
         // QUIZ
-		$expected = null;
+		$expected = [1,2,3,4,5,6];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -219,7 +220,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_chunk([1, 2, 3, 4, 5, 6, 7], 3);
 
         // QUIZ
-		$expected = null;
+		$expected = [[1,2,3],[4,5,6],[7]];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -232,7 +233,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_slice([1, 2, 3, 4, 5], 2, 2);
 
         // QUIZ
-		$expected = null;
+		$expected = [3,4];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -243,7 +244,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_slice([1, 2, 3, 4, 5], -2, 2);
 
         // QUIZ
-		$expected = null;
+		$expected = [4,5];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -255,7 +256,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_reverse([1, 2, 3]);
 
         // QUIZ
-		$expected = null;
+		$expected = [3, 2, 1];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -268,7 +269,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_values($actual);
 
         // QUIZ
-		$expected = null;
+		$expected = [2, 3];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -281,7 +282,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_values($actual);
 
         // QUIZ
-		$expected = null;
+		$expected = [1, 2];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -293,7 +294,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_values($actual);
 
         // QUIZ
-		$expected = null;
+		$expected = ['a', 'd'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -318,7 +319,11 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_count_values([1, 1, 1, 2, 2, 3]);
 
         // QUIZ
-		$expected = null;
+		$expected = [
+            1 => 3,   
+            2 => 2 ,
+            3 => 1
+        ];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -336,7 +341,11 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_flip($population_kvs);
 
         // QUIZ
-		$expected = null;
+		$expected =[
+            14047594 => '東京都',
+            8837685 => '大阪府',
+            7542415 => '愛知県'
+        ];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -349,7 +358,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_pop($v);
 
         // QUIZ
-		$expected = null;
+		$expected = 3;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -364,7 +373,7 @@ class U210ArrayFunctionsTest extends TestCase
         array_unshift($v, -1, 0);
 
         // QUIZ
-		$expected = null;
+		$expected = [-1, 0, 1, 2, 3];
         // /QUIZ
 
         $this->assertSame($expected, $v);
@@ -377,7 +386,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_shift($v);
 
         // QUIZ
-		$expected = null;
+		$expected = 1;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -404,7 +413,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_sum([1, 2, 3, 4, 5]);
 
         // QUIZ
-		$expected = null;
+		$expected = 15;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -423,7 +432,12 @@ class U210ArrayFunctionsTest extends TestCase
         asort($actual);
 
         // QUIZ
-		$expected = null;
+		$expected = [
+            '千葉県' => 6284480,
+            '埼玉県' => 7344765,
+            '神奈川県' => 9237337,
+            '東京都' => 14047594,
+        ];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -442,7 +456,12 @@ class U210ArrayFunctionsTest extends TestCase
         arsort($actual);
 
         // QUIZ
-		$expected = null;
+		$expected = [ 
+            '東京都' => 14047594,
+            '神奈川県' => 9237337,
+            '埼玉県' => 7344765,
+            '千葉県' => 6284480
+        ];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -461,7 +480,12 @@ class U210ArrayFunctionsTest extends TestCase
         ksort($actual);
 
         // QUIZ
-		$expected = null;
+		$expected = [
+            'Chiba' => 6284480,
+            'Kanagawa' => 9237337,
+            'Saitama' => 7344765,
+            'Tokyo' => 14047594,
+        ];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -480,7 +504,12 @@ class U210ArrayFunctionsTest extends TestCase
         krsort($actual);
 
         // QUIZ
-		$expected = null;
+		$expected = [
+            'Tokyo' => 14047594,
+            'Saitama' => 7344765,
+            'Kanagawa' => 9237337,
+            'Chiba' => 6284480
+        ];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -511,7 +540,7 @@ class U210ArrayFunctionsTest extends TestCase
         $actual = array_column($prefectures, 'population');
 
         // QUIZ
-		$expected = null;
+		$expected = [6284480,7344765, 14047594, 9237337];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -544,7 +573,25 @@ class U210ArrayFunctionsTest extends TestCase
         array_multisort($populations, $prefectures);
 
         // QUIZ
-		$expected = null;
+		$expected = [
+            [
+                'name' => '千葉県',
+                'population' => 6284480
+            ],
+            [
+                'name' => '埼玉県',
+                'population' => 7344765
+            ],
+            [
+                'name' => '神奈川県',
+                'population' => 9237337
+            ],
+            [
+                'name' => '東京都',
+                'population' => 14047594
+            ],
+        ];
+;
         // /QUIZ
 
         $this->assertSame($expected, $prefectures);

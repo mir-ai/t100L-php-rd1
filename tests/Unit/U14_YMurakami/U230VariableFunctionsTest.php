@@ -168,7 +168,7 @@ class U230VariableFunctionsTest extends TestCase
         $v = 123;
 
         // QUIZ
-		$expected = null;
+		$expected = strval($v);
         // /QUIZ
 
         $this->assertTrue(is_string($expected));
@@ -180,7 +180,7 @@ class U230VariableFunctionsTest extends TestCase
         $v = "123";
 
         // QUIZ
-		$expected = null;
+		$expected = intval($v);
         // /QUIZ
 
         $this->assertTrue(is_numeric($expected));

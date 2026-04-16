@@ -132,7 +132,7 @@ class U220FileFunctionsTest extends TestCase
 
         // $urlからコンテンツを取得して $xml 変数に入れて下さい。
         // QUIZ
-		$expected = null;
+		$xml = file_get_contents($url);
         // /QUIZ
 
         $this->assertTrue(str_contains($xml, '<title>気象特別警報・警報・注意報</title>'));
@@ -145,7 +145,7 @@ class U220FileFunctionsTest extends TestCase
 
         // $tmpfile に $contentを保存して下さい。
         // QUIZ
-		$expected = null;
+		file_put_contents($tmpfile, $content);
         // /QUIZ
 
         $c = file_get_contents($tmpfile);

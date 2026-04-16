@@ -36,7 +36,7 @@ class U300ValueToLabelTest extends TestCase
         }
 
         // QUIZ
-		$expected = null;
+		$expected = 'りんご';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -61,7 +61,7 @@ class U300ValueToLabelTest extends TestCase
         };
 
         // QUIZ
-		$expected = null;
+		$expected = 'オレンジ';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -88,7 +88,7 @@ class U300ValueToLabelTest extends TestCase
         $actual = $fruits[$v] ?? '不明';
 
         // QUIZ
-		$expected = null;
+		$expected = 'ぶどう';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -105,7 +105,7 @@ class U300ValueToLabelTest extends TestCase
         $actual = $e->label();
 
         // QUIZ
-		$expected = null;
+		$expected = 'パイナップル';
         // /QUIZ
 
         $this->assertSame($expected, $actual);

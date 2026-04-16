@@ -210,7 +210,27 @@ END;
         $text = $this->getInput();
 
         // QUIZ
-		$expected = null;
+        $lines = explode("\n", $text);
+        $words = [];
+
+        foreach ($lines as $line) {
+            $_words = explode(' ', $line);
+            foreach ($_words as $word) {
+                $words[] = $word;
+            }
+        }
+        $words = str_replace(['.', ',', "'"], '', $words);
+        $counts = array_count_values($words);
+        $frequens_words = [];
+        foreach ($counts as $tango => $count) {
+            if ($count >= 4) {
+                $frequens_words[] = $tango;
+            }
+        }
+
+        sort($frequens_words);
+
+		$actual = $frequens_words;
         // /QUIZ
 
         $expected = $this->getOutput();

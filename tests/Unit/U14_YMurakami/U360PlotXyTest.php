@@ -182,7 +182,31 @@ class U360PlotXyTest extends TestCase
         $inputs = $this->getInput();
 
         // QUIZ
-		$expected = null;
+		// 縦横の最大サイズを作成する
+        [$max_x, $max_y] = [0, 0];
+
+        foreach ($inputs as $input) {
+            [$y, $x, $char] = $input;
+            $max_x = max($x, $max_x);
+            $max_y = max($y, $max_y);
+        }
+
+        // 空白のみのキャンバスを作成する
+        $canvas = [];
+        for ($y = 0; $y <= $max_y; $y++) {
+            $canvas[] = array_fill(0, $max_x + 1, ' ');
+        }
+
+        // 座標データに従って、キャンバス（配列）に文字を描く
+        foreach ($inputs as $plot) {
+            [$y, $x, $char] = $plot;
+            $canvas[$y][$x] = $char;
+        }
+
+        foreach ($canvas as $line) {
+            $actual[] = implode('', $line);
+            echo implode('', $line) . "\n";
+        }
         // /QUIZ
         $expected = $this->getOutput();
 

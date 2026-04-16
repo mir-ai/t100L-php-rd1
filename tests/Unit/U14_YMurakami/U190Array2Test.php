@@ -158,7 +158,7 @@ class U190Array2Test extends TestCase
         $actual = $v['second'];
 
         // QUIZ
-		$expected = null;
+		$expected = 'b';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -288,7 +288,7 @@ class U190Array2Test extends TestCase
         }
 
         // QUIZ
-		$expected = null;
+		$expected = ['東京都ラブ', '大阪府ラブ', '愛知県ラブ'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -330,7 +330,7 @@ class U190Array2Test extends TestCase
         }
 
         // QUIZ
-		$expected = null;
+		$expected = ["犬の英語訳はdogです。","猫の英語訳はcatです。","ネズミの英語訳はratです。"];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -351,7 +351,7 @@ class U190Array2Test extends TestCase
         }
 
         // QUIZ
-		$expected = null;
+		$expected = ["Yahooのホームページアドレスはhttps://www.yahoo.co.jp/です。","Amazonのホームページアドレスはhttps://www.amazon.co.jp/です。","MIRAiEのホームページアドレスはhttps://www.mir-ai.co.jp/です。"];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -460,7 +460,9 @@ class U190Array2Test extends TestCase
         }
 
         // QUIZ
-		$expected = null;
+		$expected = ["犬は英語でdogです。","犬は中国語で狗です。","犬は韓国語で개です。",
+                     "猫は英語でcatです。","猫は中国語で猫です。","猫は韓国語で고양이です。",
+                     "ネズミは英語でratです。","ネズミは中国語で鼠です。","ネズミは韓国語で쥐です。"];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -501,6 +503,9 @@ class U190Array2Test extends TestCase
         $actual = [];
 
         // 自分で foreach 文と回答をかいて下さい。
+        foreach($kvs as $line => $length){
+            $actual[] ="{$line}の路線総延長は {$length} キロです。"; 
+        }
 
         // QUIZ
 		$expected = null;
@@ -559,6 +564,10 @@ class U190Array2Test extends TestCase
         $actual = [];
 
         // 自分で foreach 文と回答をかいて下さい。
+        foreach ($kvs as $line => $details) {
+            $actual[] = "{$line}の路線総延長は {$details['length']} キロ、１日の乗降客数は {$details['passengers']} 人です。";
+        }
+
         // QUIZ
 		$expected = null;
         // /QUIZ

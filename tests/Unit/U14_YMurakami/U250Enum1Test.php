@@ -41,7 +41,7 @@ class U250Enum1Test extends TestCase
         $actual = Weather::Hare->value;
 
         // QUIZ
-		$expected = null;
+		$expected = 1;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -52,7 +52,7 @@ class U250Enum1Test extends TestCase
         $actual = Weather::TryFrom(1);
 
         // QUIZ
-		$expected = null;
+		$expected = Weather::Hare;
         // /QUIZ
 
         $this->assertSame($expected, $actual);

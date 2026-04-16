@@ -239,7 +239,51 @@ class U320HourlyReportTest extends TestCase
         $actual = [];
 
         // QUIZ
-		$expected = null;
+        $valid_items = [];
+        foreach ($action_logs as $log_item) {
+            $time = $log_item['time'] ?? '';
+            $action = $log_item['action'] ?? '';
+            if (! $time) {
+                continue;
+            }
+
+            if (! $action) {
+                continue;
+            }
+
+            if (! in_array($action, ['KISYO', 'SYOKUJI', 'SLEEP'])) {
+                continue;
+            }
+
+            [$_hour, $minute] = sscanf($time, "%02d:%02d");
+
+            if ($_hour < 0) {
+                continue;
+            }
+
+            if ($_hour > 23) {
+                continue;
+            }
+
+            // 有効なデータのみ残った
+            $valid_items[] = $log_item;
+
+             // 元の値を取る。値がなければ 0 をいれる。
+            $v = $valid_items[$_hour][$action] ?? 0;
+
+            // もとに値に1足して書き戻す。
+            $valid_items[$_hour][$action] = $v + 1;
+        };
+        $actual[] = ['時間','起床','食事','就寝'];
+        for ($_hour = 0; $_hour < 24; $_hour++) {
+            $actual[] = [
+                sprintf("%2d時", $_hour),
+                $valid_items[$_hour]['KISYO'] ?? 0,
+                $valid_items[$_hour]['SYOKUJI'] ?? 0,
+                $valid_items[$_hour]['SLEEP'] ?? 0,
+            ];
+        }
+        
         // /QUIZ
 
         $expected = $this->getOutput();

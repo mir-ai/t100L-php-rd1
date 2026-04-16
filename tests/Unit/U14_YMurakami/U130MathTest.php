@@ -13,7 +13,7 @@ class U130MathTest extends TestCase
         $actual = 1 + 1;
 
         // QUIZ
-		$expected = null;
+		$expected = 2;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -24,7 +24,7 @@ class U130MathTest extends TestCase
         $actual = 1 - 1;
 
         // QUIZ
-		$expected = null;
+		$expected = 0;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -35,7 +35,7 @@ class U130MathTest extends TestCase
         $actual = 1 * 2;
 
         // QUIZ
-		$expected = null;
+		$expected = 2;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -46,7 +46,7 @@ class U130MathTest extends TestCase
         $actual = 4 / 2;
 
         // QUIZ
-		$expected = null;
+		$expected = 2;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -57,7 +57,7 @@ class U130MathTest extends TestCase
         $actual = 4 % 3;
 
         // QUIZ
-		$expected = null;
+		$expected = 1;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -68,7 +68,7 @@ class U130MathTest extends TestCase
         $actual = 5 % 3;
 
         // QUIZ
-		$expected = null;
+		$expected = 2;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -79,7 +79,7 @@ class U130MathTest extends TestCase
         $actual = 6 % 3;
 
         // QUIZ
-		$expected = null;
+		$expected = 0;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -91,7 +91,7 @@ class U130MathTest extends TestCase
         $actual++;
 
         // QUIZ
-		$expected = null;
+		$expected = 2;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -103,7 +103,7 @@ class U130MathTest extends TestCase
         $actual--;
 
         // QUIZ
-		$expected = null;
+		$expected = 1;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -115,7 +115,7 @@ class U130MathTest extends TestCase
         $actual += 2;
 
         // QUIZ
-		$expected = null;
+		$expected = 3;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -127,7 +127,7 @@ class U130MathTest extends TestCase
         $actual -= 2;
 
         // QUIZ
-		$expected = null;
+		$expected = 1;
         // /QUIZ
 
         $this->assertSame($expected, $actual);

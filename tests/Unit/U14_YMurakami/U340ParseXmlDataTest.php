@@ -267,7 +267,95 @@ END;
         $actual = [];
 
         // QUIZ
-		$expected = null;
+        // XMLを整形する
+        // ... 改行を全部消す。
+        $xml_tmp = str_replace(["\n", "\r"], "", $xml_raw);
+
+        // ... > <間のスペースを除去する。
+        $xml_tmp = preg_replace('/>[\s]+</', '><', $xml_tmp);
+
+        // ... そうすると、きれいにインデントされた、１行１ノードのXMLに整形してくれる。
+        $simpleXmlElement = new SimpleXMLElement($xml_tmp);
+        $dom = dom_import_simplexml($simpleXmlElement)->ownerDocument;
+        $dom->formatOutput = true;
+        $xml_formatted = $dom->saveXML();
+
+        $report_date = '';
+        if (preg_match('/<ReportDateTime>([\S\s]+?)<\/ReportDateTime>/',  $xml_formatted, $matches)) {
+            $report_date = $matches[1];
+        }
+        $is_in_item = false;
+        $item_mode = '';
+        $items = [];
+        $current_warnings = [];
+        $current_warning = [];
+        $current_city = [];
+
+        $lines = explode("\n", $xml_formatted);
+        foreach ($lines as $line) {
+            if (! $is_in_item) {
+                // 今アイテムモードではない場合
+                if (str_contains($line, '<Item>')) {
+                    // <Item> -> アイテムモード有効
+                    $is_in_item = true;
+                    $current_warnings = [];
+                    $current_city = [];
+                    continue;
+                }
+            } else {
+                // 今アイテムモードの場合
+                if (str_contains($line, '<Kind>')) {
+                    // <Kind> をみつけた
+                    $item_mode = 'KIND';
+                    $current_warning = [];
+                    continue;
+
+                } else if (str_contains($line, '<Area>')) {
+                    // <Area> をみつけた
+                    $item_mode = 'AREA';
+                    continue;
+
+                } else if (str_contains($line, '</Item>')) {
+                    // </Item> -> アイテムモード解除
+                    $is_in_item = false;
+
+                    $items[] = [
+                        'city_code' => $current_city['code'],
+                        'city_name' => $current_city['name'],
+                        'warnings' => $current_warnings,
+                    ];
+                    continue;
+
+                
+                } else if (str_contains($line, '</Kind>')) {
+                    // </Item> -> 種別モード解除なので、種別データを種別の配列に入れる。
+                    $current_warnings[] = $current_warning;
+                    continue;
+
+                } else if (preg_match('/<Name>([\S\s]+?)<\/Name>/', $line, $matches)) {
+                    $name = $matches[1];
+                    if ($item_mode == 'KIND') {
+                        $current_warning['name'] = $name;
+                    } else if ($item_mode == 'AREA') {
+                        $current_city['name'] = $name;
+                    }
+                } else if (preg_match('/<Code>([\S\s]+?)<\/Code>/', $line, $matches)) {
+                    $code = $matches[1];
+                    if ($item_mode == 'KIND') {
+                        $current_warning['code'] = $code;
+                    } else if ($item_mode == 'AREA') {
+                        $current_city['code'] = $code;
+                    }
+                } else if (preg_match('/<Status>([\S\s]+?)<\/Status>/', $line, $matches)) {
+                    $status = $matches[1];
+                    $current_warning['status'] = $status;
+                }
+            }
+        }
+        $actual = [
+            'report_date_time' => $report_date,
+            'items' => $items,
+        ];
         // /QUIZ
 
         $expected = $this->getOutput();

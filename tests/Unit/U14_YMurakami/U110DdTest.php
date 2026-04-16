@@ -14,7 +14,7 @@ class U110DdTest extends TestCase
         // ↓実行すると、値が表示され、処理が中断します。テストの途中で値の中身を確認したい時に使います。
 
         $v = 12345;
-        // dd($v);
+        dd($v);
 
         // ↓ddで処理が止まるので、ここは実行されない。
         $this->assertTrue(true);

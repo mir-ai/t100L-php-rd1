@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\U14_YMurakami;
 
+use Illuminate\Foundation\Console\AboutCommand;
 use PHPUnit\Framework\TestCase;
 
 // String 関数
@@ -23,7 +24,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = trim(" This is trimmed text.  \n");
 
         // QUIZ
-		$expected = null;
+		$expected = "This is trimmed text.";
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -44,7 +45,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = sprintf("%05d", 2);
 
         // QUIZ
-		$expected = null;
+		$expected = '00002';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -64,7 +65,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = sprintf("%05s",'B');
 
         // QUIZ
-		$expected = null;
+		$expected = '0000B';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -84,7 +85,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = sprintf("%5s",'B');
 
         // QUIZ
-		$expected = null;
+		$expected = '    B';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -108,7 +109,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_convert_kana('ABC', 'R');
 
         // QUIZ
-		$expected = null;
+		$expected = 'ＡＢＣ';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -120,7 +121,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_convert_kana('１２３', 'n');
 
         // QUIZ
-		$expected = null;
+		$expected = '123';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -142,7 +143,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_convert_kana('１２３ａｂｃ', 'a');
 
         // QUIZ
-		$expected = null;
+		$expected = '123abc';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -174,7 +175,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_convert_kana(' ', 'S');
 
         // QUIZ
-		$expected = null;
+		$expected = '　';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -196,7 +197,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_convert_kana('ｱｲｳ', 'K');
 
         // QUIZ
-		$expected = null;
+		$expected = 'アイウ';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -218,7 +219,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_convert_kana('ｱｲｳ', 'H');
 
         // QUIZ
-		$expected = null;
+		$expected = 'あいう';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -240,7 +241,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_convert_kana('あいう', 'C');
 
         // QUIZ
-		$expected = null;
+		$expected = 'アイウ';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -252,7 +253,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_convert_kana('ｶﾞｷﾞｸﾞｹﾞｺﾞ', 'KV');
 
         // QUIZ
-		$expected = null;
+		$expected = 'ガギグゲゴ';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -264,7 +265,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = strlen('abc');
 
         // QUIZ
-		$expected = null;
+		$expected = 3;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -276,7 +277,7 @@ class U200StringFunctionsTest extends TestCase
 
         // strlenは日本語不可なのでとんでもない値が入ります。
         // QUIZ
-		$expected = null;
+		$expected = 9;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -288,7 +289,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_strlen('あいう');
 
         // QUIZ
-		$expected = null;
+		$expected = 3;
         // /QUIZ
 
         $this->assertSame($expected, $actual); // mb_strlenは日本語OK
@@ -320,7 +321,7 @@ class U200StringFunctionsTest extends TestCase
 
         // strlenは日本語不可なので変更はかかりません。
         // QUIZ
-		$expected = null;
+		$expected = 'Ａｂｃ';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -332,7 +333,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_strtolower('Ａｂｃ');
 
         // QUIZ
-		$expected = null;
+		$expected = 'ａｂｃ';
         // /QUIZ
 
         $this->assertSame($expected, $actual); // mb_strtolower は日本語OK
@@ -344,7 +345,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = strtoupper('Abc');
 
         // QUIZ
-		$expected = null;
+		$expected = 'ABC';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -356,7 +357,7 @@ class U200StringFunctionsTest extends TestCase
 
         // strtoupperも日本語は変更がかかりません。
         // QUIZ
-		$expected = null;
+		$expected = 'Ａｂｃ';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -368,7 +369,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_strtoupper('Ａｂｃ');
 
         // QUIZ
-		$expected = null;
+		$expected = 'ＡＢＣ';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -380,7 +381,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = str_starts_with('This is a pen.', 'This is ');
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -391,7 +392,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = str_starts_with('これは、ペンです。', 'これは、');
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -403,7 +404,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = str_ends_with('This is a pen.', ' pen.');
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -415,7 +416,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = str_contains('This is a pen.', ' is a ');
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -426,7 +427,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = str_contains('これは、ペンです。', '、ペン');
 
         // QUIZ
-		$expected = null;
+		$expected = true;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -438,7 +439,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = strpos('abcde', 'a');
 
         // QUIZ
-		$expected = null;
+		$expected = 0;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -449,7 +450,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = strpos('abcde', 'bc');
 
         // QUIZ
-		$expected = null;
+		$expected = 1;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -460,7 +461,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = strpos('abcde', 'de');
 
         // QUIZ
-		$expected = null;
+		$expected = 3;
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -483,7 +484,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_strpos('あいう', 'いう');
 
         // QUIZ
-		$expected = null;
+		$expected = 1;
         // /QUIZ
 
         $this->assertSame($expected, $actual); // mb_strpos は日本語OK
@@ -495,7 +496,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = substr('abcde', 1);
 
         // QUIZ
-		$expected = null;
+		$expected = 'bcde';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -506,7 +507,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = substr('abcde', 1, 2);
 
         // QUIZ
-		$expected = null;
+		$expected = 'bc';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -517,7 +518,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = substr('abcde', -1);
 
         // QUIZ
-		$expected = null;
+		$expected = 'e';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -528,7 +529,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = substr('abcde', -2);
 
         // QUIZ
-		$expected = null;
+		$expected = 'de';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -539,7 +540,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = substr('abcde', -2, 1);
 
         // QUIZ
-		$expected = null;
+		$expected = 'd';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -562,7 +563,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_substr('あいうえお', 1);
 
         // QUIZ
-		$expected = null;
+		$expected = 'いうえお';
         // /QUIZ
 
         $this->assertSame($expected, $actual); // mb_substr 日本語OK
@@ -573,7 +574,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_substr('あいうえお', 1, 2);
 
         // QUIZ
-		$expected = null;
+		$expected = 'いう';
         // /QUIZ
 
         $this->assertSame($expected, $actual); // mb_substr 日本語OK
@@ -585,7 +586,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = str_replace('cd', 'CD', 'abcdef');
 
         // QUIZ
-		$expected = null;
+		$expected = 'abCDef';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -596,7 +597,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = str_replace(['b', 'c'], ['B', 'C'], 'abcdef');
 
         // QUIZ
-		$expected = null;
+		$expected = 'aBCdef';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -607,7 +608,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = str_replace('い', 'イ', 'あいうえお');
 
         // QUIZ
-		$expected = null;
+		$expected = 'あイうえお';
         // /QUIZ
 
         $this->assertSame($expected, $actual); // 日本語も利用可能
@@ -618,7 +619,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = str_replace(['う', 'え'], ['ウ', 'エ'], 'あいうえお');
 
         // QUIZ
-		$expected = null;
+		$expected = 'あいウエお';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -631,7 +632,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = str_replace(['1', 'one'], ['one', 'two'], '1');
 
         // QUIZ
-		$expected = null;
+		$expected = 'two';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -643,7 +644,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = preg_replace('/\s+/', '-', 'This is  a  pen.'); //連続する空白を - にする
 
         // QUIZ
-		$expected = null;
+		$expected = 'This-is-a-pen.';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -654,7 +655,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = preg_replace('/[^0-9]/', '', '090-1234-5678'); //数字以外を削除
 
         // QUIZ
-		$expected = null;
+		$expected = '09012345678';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -667,7 +668,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_ereg_replace("[‐‑–—―−ｰ]", "-", '‐‑–—―−ｰ');
 
         // QUIZ
-		$expected = null;
+		$expected = '-------';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -679,7 +680,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_ereg_replace("[´’‘゜'“´”\"\❛]", "'", "´’‘゜'“´”\"❛");
 
         // QUIZ
-		$expected = null;
+		$expected = "''''''''''";
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -691,7 +692,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = mb_ereg_replace("[^ァ-ヶ]", "", "アイウエオかきくけこＡＢＣabc");
 
         // QUIZ
-		$expected = null;
+		$expected = 'アイウエオ';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -710,7 +711,7 @@ class U200StringFunctionsTest extends TestCase
         };
 
         // QUIZ
-		$expected = null;
+		$expected = ['26', '02', '28'];
         // /QUIZ
 
         $this->assertSame($expected, [$n1, $n2, $n3]);
@@ -722,7 +723,7 @@ class U200StringFunctionsTest extends TestCase
         $has_hiragana = preg_match('/[ぁ-ん]/u', 'イチニチイチゼン一日一善', $match);
 
         // QUIZ
-		$expected = null;
+		$expected = 0;
         // /QUIZ
 
         $this->assertSame($expected, $has_hiragana);
@@ -735,7 +736,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = $matches;
 
         // QUIZ
-		$expected = null;
+		$expected = [['v=1','v=20','v=300'],['1','20','300']];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -748,7 +749,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = $matches;
 
         // QUIZ
-		$expected = null;
+		$expected = ['ｖ=1','1'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -761,7 +762,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = json_encode($v);
 
         // QUIZ
-		$expected = null;
+		$expected = '[1,2,3]';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -773,7 +774,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = json_encode($v);
 
         // QUIZ
-		$expected = null;
+		$expected = '["a","b","c"]';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -789,7 +790,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = json_encode($v);
 
         // QUIZ
-		$expected = null;
+		$expected = '{"Tokyo":14047594,"Osaka":8837685,"Aichi":7542415}';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -912,7 +913,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = rtrim("\n This is trimmed text.  \n");
 
         // QUIZ
-		$expected = null;
+		$expected = "\n This is trimmed text.";
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -924,7 +925,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = strip_tags('<p>お問い合わせは<b><a href="#">こちら</a></b></p>');
 
         // QUIZ
-		$expected = null;
+		$expected = 'お問い合わせはこちら';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -937,7 +938,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = preg_split("//u", "電話番号は 090-1234-5678 です。", -1, PREG_SPLIT_NO_EMPTY);
 
         // QUIZ
-		$expected = null;
+		$expected = ['電','話','番','号','は',' ','0','9','0','-','1','2','3','4','-','5','6','7','8',' ','で','す','。'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -949,7 +950,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = preg_split("/[aiueo]+/", "korewa nihongo desu");
 
         // QUIZ
-		$expected = null;
+		$expected = ['k','r','w',' n','h','ng',' d','s',''];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -961,7 +962,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = str_repeat('*', 5);
 
         // QUIZ
-		$expected = null;
+		$expected = '*****';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -973,7 +974,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = strtr('abc', 'c', 'C');
 
         // QUIZ
-		$expected = null;
+		$expected = 'abC';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -993,7 +994,7 @@ class U200StringFunctionsTest extends TestCase
 
         // 一度置換した結果は、再び置換されない
         // QUIZ
-		$expected = null;
+		$expected = 'two';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -1025,7 +1026,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = sscanf('time=12:34.5', "time=%d:%d.%d");
 
         // QUIZ
-		$expected = null;
+		$expected = [12,34,5];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -1037,7 +1038,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = number_format(1234567890);
 
         // QUIZ
-		$expected = null;
+		$expected = '1,234,567,890';
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -1049,7 +1050,7 @@ class U200StringFunctionsTest extends TestCase
         $actual = nl2br("これは\n改行付きの\nテキスト\nです");
 
         // QUIZ
-		$expected = null;
+		$expected = "これは<br />\n改行付きの<br />\nテキスト<br />\nです";
         // /QUIZ
 
         $this->assertSame($expected, $actual);

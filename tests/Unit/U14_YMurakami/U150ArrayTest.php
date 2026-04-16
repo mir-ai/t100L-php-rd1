@@ -28,7 +28,7 @@ class U150ArrayTest extends TestCase
         $actual[] = 3;
 
         // QUIZ
-		$expected = null;
+		$expected = [1,2,3];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -42,7 +42,7 @@ class U150ArrayTest extends TestCase
         $actual[] = 3;
 
         // QUIZ
-		$expected = null;
+		$expected = [1,2,3];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -61,7 +61,7 @@ class U150ArrayTest extends TestCase
         $actual[] = 'c';
 
         // QUIZ
-		$expected = null;
+		$expected = ['a','b','c'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
@@ -75,7 +75,7 @@ class U150ArrayTest extends TestCase
         $actual[] = 'c';
 
         // QUIZ
-		$expected = null;
+		$expected = ['a','b','c'];
         // /QUIZ
 
         $this->assertSame($expected, $actual);
